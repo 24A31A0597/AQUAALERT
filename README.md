@@ -189,5 +189,3 @@ If you like this project, give it a ⭐ on GitHub and help spread awareness for 
 ## 📝 License
 
 This project is open-source and available under the MIT License.
-
----
