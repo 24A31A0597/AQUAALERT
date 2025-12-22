@@ -139,3 +139,10 @@ npm install
 npm run dev
 
 ---
+
+## 🔐 Environment Setup
+Create a Firebase project and add your configuration inside:
+```js
+src/firebase.js
+⚠️ Do not expose API keys in public repositories.
+Use environment variables for production deployments.
