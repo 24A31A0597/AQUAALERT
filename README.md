@@ -156,11 +156,11 @@ Use environment variables for production deployments.
 
 ## 📈 Future Enhancements
 
-Real IoT sensor integration
-AI-based hazard verification
-Push notifications for emergencies
-Advanced analytics dashboard
-Mobile application version
+- Real IoT sensor integration
+- AI-based hazard verification
+- Push notifications for emergencies
+- Advanced analytics dashboard
+- Mobile application version
 
 ---
 
