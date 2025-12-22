@@ -164,11 +164,6 @@ Mobile application version
 
 ---
 
-## 📝 License
-This project is open-source and available under the MIT License.
-
----
-
 ## 🙌 Acknowledgements
 OpenStreetMap contributors
 Firebase & Vercel
@@ -178,5 +173,10 @@ Community testers and contributors
 
 ## ⭐ Support
 If you like this project, give it a ⭐ on GitHub and help spread awareness for safer communities 🌍
+
+---
+
+## 📝 License
+This project is open-source and available under the MIT License.
 
 ---
