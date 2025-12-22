@@ -31,7 +31,7 @@ const Register = () => {
       await registerUser(data.name, data.email, data.password);
       addNotification({
         type: 'success',
-        title: 'Welcome to Project Aqua Alert!',
+        title: 'Welcome to Aqua Alert!',
         message: 'Your account has been created successfully. You can now start monitoring water safety in your community.'
       });
       navigate('/');
@@ -64,7 +64,7 @@ const Register = () => {
             Join Our Community
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Create your Project Aqua Alert account and help protect water safety
+            Create your Aqua Alert account and help protect water safety
           </p>
         </div>
 

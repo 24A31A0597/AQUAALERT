@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { 
   AlertTriangle, 
   Waves, 
@@ -13,6 +14,10 @@ import {
   Bell,
   ExternalLink
 } from 'lucide-react';
+// @ts-ignore - firebase.js is a JS module
+import { ref, onValue } from 'firebase/database';
+// @ts-ignore - firebase.js is a JS module
+import { db } from '../firebase';
 
 interface EmergencyAlert {
   id: string;
@@ -31,96 +36,74 @@ interface EmergencyAlert {
 }
 
 const EmergencyAlerts = () => {
+  const { t } = useTranslation();
   const [alerts, setAlerts] = useState<EmergencyAlert[]>([]);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [filter, setFilter] = useState<'all' | 'active' | 'watch' | 'warning' | 'emergency'>('all');
 
-  // Mock INCOIS alerts data
+  // Fetch official alerts and verified hazards from Firebase
   useEffect(() => {
-    const mockAlerts: EmergencyAlert[] = [
-      {
-        id: 'alert-001',
-        type: 'tsunami',
-        severity: 'warning',
-        title: 'Tsunami Warning - Coastal Areas',
-        description: 'A tsunami warning has been issued for coastal areas following a 7.2 magnitude earthquake in the Pacific Ocean.',
-        location: 'East Coast Maritime Zone',
-        coordinates: [40.7128, -74.0060],
-        issuedAt: '2024-01-15T14:30:00Z',
-        expiresAt: '2024-01-15T20:30:00Z',
-        source: 'INCOIS - Indian National Centre for Ocean Information Services',
-        instructions: [
-          'Move immediately to higher ground or inland',
-          'Stay away from beaches, harbors, and coastal areas',
-          'Listen to local emergency broadcasts',
-          'Do not return to coastal areas until all-clear is given'
-        ],
-        affectedAreas: ['Coastal District A', 'Harbor Zone B', 'Beach Communities C-F'],
-        status: 'active'
-      },
-      {
-        id: 'alert-002',
-        type: 'flood',
-        severity: 'emergency',
-        title: 'Flash Flood Emergency - Urban Areas',
-        description: 'Extreme rainfall has caused rapid flooding in urban areas. Immediate evacuation required for low-lying zones.',
-        location: 'Metropolitan Downtown',
-        coordinates: [40.7589, -73.9851],
-        issuedAt: '2024-01-15T12:15:00Z',
-        expiresAt: '2024-01-16T06:00:00Z',
-        source: 'National Weather Service',
-        instructions: [
-          'Evacuate low-lying areas immediately',
-          'Do not drive through flooded roads',
-          'Seek higher ground and shelter',
-          'Call emergency services if trapped'
-        ],
-        affectedAreas: ['Downtown District', 'Riverside Communities', 'Industrial Zone'],
-        status: 'active'
-      },
-      {
-        id: 'alert-003',
-        type: 'storm',
-        severity: 'watch',
-        title: 'Severe Storm Watch - Regional',
-        description: 'Conditions are favorable for severe thunderstorms with potential for damaging winds and heavy rainfall.',
-        location: 'Regional Area',
-        coordinates: [40.7282, -73.7949],
-        issuedAt: '2024-01-15T10:00:00Z',
-        expiresAt: '2024-01-15T22:00:00Z',
-        source: 'Regional Weather Center',
-        instructions: [
-          'Monitor weather conditions closely',
-          'Secure outdoor objects and equipment',
-          'Avoid unnecessary travel',
-          'Stay indoors during severe weather'
-        ],
-        affectedAreas: ['Northern Suburbs', 'Agricultural Areas', 'Mountain Regions'],
-        status: 'active'
-      },
-      {
-        id: 'alert-004',
-        type: 'chemical',
-        severity: 'warning',
-        title: 'Chemical Spill - Water Supply Risk',
-        description: 'Industrial chemical spill detected near water treatment facility. Potential contamination risk.',
-        location: 'Industrial Complex East',
-        coordinates: [40.6892, -74.0445],
-        issuedAt: '2024-01-14T16:45:00Z',
-        expiresAt: '2024-01-15T16:45:00Z',
-        source: 'Environmental Protection Agency',
-        instructions: [
-          'Avoid using tap water until further notice',
-          'Use bottled water for drinking and cooking',
-          'Stay away from affected industrial area',
-          'Report any unusual water odor or color'
-        ],
-        affectedAreas: ['East Industrial Zone', 'Adjacent Residential Areas'],
-        status: 'expired'
+    const officialAlertsRef = ref(db, 'alerts/official');
+    const hazardReportsRef = ref(db, 'hazards/reports');
+    
+    const unsubscribeOfficial = onValue(officialAlertsRef, (snapshot) => {
+      const officialAlerts: EmergencyAlert[] = [];
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        Object.entries(data).forEach(([id, value]: any) => {
+          if (value.status === 'active') {
+            officialAlerts.push({
+              id,
+              type: 'tsunami',
+              severity: value.severity === 'high' ? 'emergency' : value.severity === 'medium' ? 'warning' : 'watch',
+              title: value.title,
+              description: value.message || '',
+              location: 'Official Source',
+              coordinates: [0, 0],
+              issuedAt: new Date(value.timestamp).toISOString(),
+              expiresAt: new Date(value.timestamp + 24 * 60 * 60 * 1000).toISOString(),
+              source: value.source || 'Admin',
+              instructions: ['Follow official instructions', 'Stay alert', 'Monitor updates'],
+              affectedAreas: ['Community Area'],
+              status: 'active'
+            });
+          }
+        });
       }
-    ];
-
-    setAlerts(mockAlerts);
+      
+      // Fetch verified hazards
+      onValue(hazardReportsRef, (hazardSnapshot) => {
+        const verifiedHazards: EmergencyAlert[] = [];
+        if (hazardSnapshot.exists()) {
+          const hazardData = hazardSnapshot.val();
+          Object.entries(hazardData).forEach(([id, value]: any) => {
+            if (value.verified === true) {
+              verifiedHazards.push({
+                id,
+                type: value.hazardType === 'flooding' ? 'flood' : value.hazardType === 'chemical' ? 'chemical' : 'tsunami',
+                severity: value.severity === 'high' || value.severity === 'critical' ? 'emergency' : value.severity === 'medium' ? 'warning' : 'watch',
+                title: value.title || `${value.hazardType} - Verified`,
+                description: value.description || '',
+                location: `Lat: ${value.location?.latitude?.toFixed(4)}, Lng: ${value.location?.longitude?.toFixed(4)}`,
+                coordinates: [value.location?.latitude || 0, value.location?.longitude || 0],
+                issuedAt: new Date(value.timestamp).toISOString(),
+                expiresAt: new Date(value.timestamp + 24 * 60 * 60 * 1000).toISOString(),
+                source: 'Community Verified Report',
+                instructions: ['Exercise caution', 'Avoid the area', 'Report additional information'],
+                affectedAreas: ['Nearby area'],
+                status: 'active'
+              });
+            }
+          });
+        }
+        
+        // Combine official + verified alerts
+        const combined = [...officialAlerts, ...verifiedHazards];
+        setAlerts(combined);
+      });
+    });
+    
+    return () => unsubscribeOfficial();
   }, []);
 
   const getAlertIcon = (type: string) => {
@@ -162,15 +145,15 @@ const EmergencyAlerts = () => {
     const expiry = new Date(expiresAt);
     const diff = expiry.getTime() - now.getTime();
     
-    if (diff <= 0) return 'Expired';
+    if (diff <= 0) return t('emergencyAlerts.labels.expired');
     
     const hours = Math.floor(diff / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     
     if (hours > 0) {
-      return `${hours}h ${minutes}m remaining`;
+      return t('emergencyAlerts.labels.timeRemainingHours', { hours, minutes });
     }
-    return `${minutes}m remaining`;
+    return t('emergencyAlerts.labels.timeRemainingMinutes', { minutes });
   };
 
   return (
@@ -185,9 +168,9 @@ const EmergencyAlerts = () => {
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Emergency Alerts</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">{t('emergencyAlerts.title')}</h1>
               <p className="text-lg text-gray-600">
-                Real-time emergency notifications from INCOIS and other authorities
+                {t('emergencyAlerts.subtitle')}
               </p>
             </div>
             <div className="mt-4 md:mt-0 flex items-center space-x-4">
@@ -200,7 +183,7 @@ const EmergencyAlerts = () => {
                 }`}
               >
                 {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
-                <span>Sound {soundEnabled ? 'On' : 'Off'}</span>
+                <span>{t('emergencyAlerts.soundEnabled')}</span>
               </button>
             </div>
           </div>
@@ -215,30 +198,30 @@ const EmergencyAlerts = () => {
         >
           {[
             { 
-              label: 'Active Alerts', 
+              label: t('emergencyAlerts.stats.activeAlerts'), 
               value: alerts.filter(a => a.status === 'active').length,
               color: 'text-red-600',
               bgColor: 'bg-red-100'
             },
             { 
-              label: 'Emergency Level', 
+              label: t('emergencyAlerts.stats.emergencyLevel'), 
               value: alerts.filter(a => a.severity === 'emergency' && a.status === 'active').length,
               color: 'text-red-600',
               bgColor: 'bg-red-100'
             },
             { 
-              label: 'Warnings', 
+              label: t('emergencyAlerts.stats.warnings'), 
               value: alerts.filter(a => a.severity === 'warning' && a.status === 'active').length,
               color: 'text-orange-600',
               bgColor: 'bg-orange-100'
             },
             { 
-              label: 'Watches', 
+              label: t('emergencyAlerts.stats.watches'), 
               value: alerts.filter(a => a.severity === 'watch' && a.status === 'active').length,
               color: 'text-yellow-600',
               bgColor: 'bg-yellow-100'
             }
-          ].map((stat, index) => (
+          ].map((stat) => (
             <div key={stat.label} className="bg-white rounded-lg shadow-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -262,11 +245,11 @@ const EmergencyAlerts = () => {
         >
           <div className="flex flex-wrap gap-2">
             {[
-              { key: 'all', label: 'All Alerts' },
-              { key: 'active', label: 'Active Only' },
-              { key: 'emergency', label: 'Emergency' },
-              { key: 'warning', label: 'Warning' },
-              { key: 'watch', label: 'Watch' }
+              { key: 'all', label: t('emergencyAlerts.filter.all') },
+              { key: 'active', label: t('emergencyAlerts.filter.active') },
+              { key: 'emergency', label: t('emergencyAlerts.filter.emergency') },
+              { key: 'warning', label: t('emergencyAlerts.filter.warning') },
+              { key: 'watch', label: t('emergencyAlerts.filter.watch') }
             ].map((filterOption) => (
               <button
                 key={filterOption.key}
@@ -282,7 +265,7 @@ const EmergencyAlerts = () => {
             ))}
           </div>
           <div className="mt-4 text-sm text-gray-600">
-            Showing {filteredAlerts.length} of {alerts.length} alerts
+            {t('emergencyAlerts.showing')} {filteredAlerts.length} {t('emergencyAlerts.of')} {alerts.length} {t('emergencyAlerts.alerts')}
           </div>
         </motion.div>
 
@@ -322,7 +305,7 @@ const EmergencyAlerts = () => {
                         <div className="flex items-center space-x-2 mb-1">
                           <h3 className="text-xl font-bold text-gray-900">{alert.title}</h3>
                           <span className={`px-2 py-1 rounded-full text-xs font-bold ${getSeverityColor(alert.severity)}`}>
-                            {alert.severity.toUpperCase()}
+                            {t(`emergencyAlerts.severity.${alert.severity}`)}
                           </span>
                         </div>
                         <div className="flex items-center space-x-4 text-sm text-gray-600">
@@ -339,7 +322,7 @@ const EmergencyAlerts = () => {
                     </div>
                     <div className="flex items-center space-x-2">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(alert.status)}`}>
-                        {alert.status.toUpperCase()}
+                        {t(`emergencyAlerts.status.${alert.status}`)}
                       </span>
                     </div>
                   </div>
@@ -349,7 +332,7 @@ const EmergencyAlerts = () => {
 
                   {/* Instructions */}
                   <div className="mb-4">
-                    <h4 className="font-semibold text-gray-900 mb-2">Emergency Instructions:</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">{t('emergencyAlerts.labels.instructions')}</h4>
                     <ul className="space-y-1">
                       {alert.instructions.map((instruction, idx) => (
                         <li key={idx} className="flex items-start space-x-2">
@@ -362,7 +345,7 @@ const EmergencyAlerts = () => {
 
                   {/* Affected Areas */}
                   <div className="mb-4">
-                    <h4 className="font-semibold text-gray-900 mb-2">Affected Areas:</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">{t('emergencyAlerts.labels.affectedAreas')}</h4>
                     <div className="flex flex-wrap gap-2">
                       {alert.affectedAreas.map((area, idx) => (
                         <span key={idx} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
@@ -375,17 +358,17 @@ const EmergencyAlerts = () => {
                   {/* Footer */}
                   <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                     <div className="text-sm text-gray-600">
-                      <div>Source: {alert.source}</div>
-                      <div>Issued: {new Date(alert.issuedAt).toLocaleString()}</div>
+                      <div>{t('emergencyAlerts.labels.source')} {alert.source}</div>
+                      <div>{t('emergencyAlerts.labels.issuedAt')} {new Date(alert.issuedAt).toLocaleString()}</div>
                     </div>
                     <div className="flex items-center space-x-3">
                       <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                         <ExternalLink className="h-4 w-4" />
-                        <span>View on Map</span>
+                        <span>{t('emergencyAlerts.labels.viewOnMap')}</span>
                       </button>
                       <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
                         <Bell className="h-4 w-4" />
-                        <span>Set Reminder</span>
+                        <span>{t('emergencyAlerts.labels.setReminder')}</span>
                       </button>
                     </div>
                   </div>
@@ -403,11 +386,11 @@ const EmergencyAlerts = () => {
             className="text-center py-12"
           >
             <Shield className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No Alerts Found</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('emergencyAlerts.noAlerts')}</h3>
             <p className="text-gray-600">
               {filter === 'all' 
-                ? 'There are currently no emergency alerts in the system.' 
-                : `No alerts match the selected filter: ${filter}`}
+                ? t('emergencyAlerts.noAlertsDesc')
+                : t('emergencyAlerts.noAlertsFilter', { filter: t(`emergencyAlerts.filter.${filter}`) })}
             </p>
           </motion.div>
         )}

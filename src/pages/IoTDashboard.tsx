@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { 
   Activity, 
   Thermometer, 
@@ -34,6 +35,7 @@ interface SensorData {
 }
 
 const IoTDashboard = () => {
+  const { t } = useTranslation();
   const [sensors, setSensors] = useState<SensorData[]>([]);
   const [selectedSensor, setSelectedSensor] = useState<string | null>(null);
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
@@ -174,14 +176,14 @@ const IoTDashboard = () => {
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">IoT Sensor Dashboard</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">{t('iotDashboard.title')}</h1>
               <p className="text-lg text-gray-600">
-                Real-time water quality monitoring across {sensors.length} locations
+                {t('iotDashboard.subtitle')}
               </p>
             </div>
             <div className="mt-4 md:mt-0 flex items-center space-x-4">
               <div className="text-sm text-gray-500">
-                Last updated: {lastUpdate.toLocaleTimeString()}
+                {t('iotDashboard.lastUpdate')} {lastUpdate.toLocaleTimeString()}
               </div>
               <button
                 onClick={() => setAutoRefresh(!autoRefresh)}
@@ -192,7 +194,7 @@ const IoTDashboard = () => {
                 }`}
               >
                 <RefreshCw className={`h-4 w-4 ${autoRefresh ? 'animate-spin' : ''}`} />
-                <span>{autoRefresh ? 'Auto-refresh ON' : 'Auto-refresh OFF'}</span>
+                <span>{t('iotDashboard.autoRefresh')}</span>
               </button>
             </div>
           </div>
@@ -207,28 +209,28 @@ const IoTDashboard = () => {
         >
           {[
             { 
-              label: 'Online Sensors', 
+              label: t('iotDashboard.stats.onlineSensors'), 
               value: sensors.filter(s => s.status === 'online').length,
               total: sensors.length,
               color: 'text-green-600',
               bgColor: 'bg-green-100'
             },
             { 
-              label: 'Warning Alerts', 
+              label: t('iotDashboard.stats.warningAlerts'), 
               value: sensors.filter(s => s.status === 'warning').length,
               total: sensors.length,
               color: 'text-yellow-600',
               bgColor: 'bg-yellow-100'
             },
             { 
-              label: 'Offline Sensors', 
+              label: t('iotDashboard.stats.offlineSensors'), 
               value: sensors.filter(s => s.status === 'offline').length,
               total: sensors.length,
               color: 'text-red-600',
               bgColor: 'bg-red-100'
             },
             { 
-              label: 'Critical Alerts', 
+              label: t('iotDashboard.stats.criticalAlerts'), 
               value: sensors.reduce((count, sensor) => {
                 return count + Object.values(sensor.parameters).filter(param => 
                   isOutOfThreshold(param.value, param.threshold)
@@ -270,7 +272,7 @@ const IoTDashboard = () => {
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-lg font-semibold text-gray-900">{sensor.name}</h3>
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(sensor.status)}`}>
-                    {sensor.status.toUpperCase()}
+                    {t(`iotDashboard.status.${sensor.status}`).toUpperCase()}
                   </span>
                 </div>
                 <div className="flex items-center text-sm text-gray-600">
@@ -278,7 +280,7 @@ const IoTDashboard = () => {
                   {sensor.location}
                 </div>
                 <div className="text-xs text-gray-500 mt-1">
-                  Updated: {new Date(sensor.lastUpdate).toLocaleTimeString()}
+                  {t('iotDashboard.labels.lastUpdate')}: {new Date(sensor.lastUpdate).toLocaleTimeString()}
                 </div>
               </div>
 

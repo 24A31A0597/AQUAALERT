@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { 
   BookOpen, 
   Play, 
@@ -8,7 +9,6 @@ import {
   Droplets,
   AlertTriangle,
   Shield,
-  Thermometer,
   Zap,
   Eye,
   ChevronRight,
@@ -32,16 +32,17 @@ interface EducationalResource {
 }
 
 const Education = () => {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [resources, setResources] = useState<EducationalResource[]>([]);
 
   // Mock educational resources
-  React.useEffect(() => {
+  useEffect(() => {
     const mockResources: EducationalResource[] = [
       {
         id: '1',
-        title: 'Understanding Water Quality Parameters',
-        description: 'Learn about pH, turbidity, dissolved oxygen, and other key indicators of water quality. This comprehensive guide covers what each parameter means and why it matters.',
+        title: t('education.resources.waterQualityParams'),
+        description: t('education.resources.waterQualityParamsDesc'),
         type: 'article',
         category: 'water-quality',
         author: 'Dr. Sarah Martinez',
@@ -51,8 +52,8 @@ const Education = () => {
       },
       {
         id: '2',
-        title: 'How to Test Water Quality at Home',
-        description: 'Step-by-step video tutorial showing you how to test your water quality using simple home testing kits and interpret the results.',
+        title: t('education.resources.testWaterAtHome'),
+        description: t('education.resources.testWaterAtHomeDesc'),
         type: 'video',
         category: 'testing',
         duration: '12 minutes',
@@ -64,8 +65,8 @@ const Education = () => {
       },
       {
         id: '3',
-        title: 'Water Contamination Types and Sources',
-        description: 'Comprehensive guide to different types of water contamination, their sources, health effects, and prevention methods.',
+        title: t('education.resources.contaminationTypes'),
+        description: t('education.resources.contaminationTypesDesc'),
         type: 'guide',
         category: 'contamination',
         author: 'Environmental Protection Agency',
@@ -76,8 +77,8 @@ const Education = () => {
       },
       {
         id: '4',
-        title: 'Emergency Water Safety Procedures',
-        description: 'What to do during water emergencies: flooding, contamination alerts, and infrastructure failures. Essential knowledge for every community member.',
+        title: t('education.resources.emergencyProcedures'),
+        description: t('education.resources.emergencyProceduresDesc'),
         type: 'article',
         category: 'emergency',
         author: 'Emergency Response Team',
@@ -87,8 +88,8 @@ const Education = () => {
       },
       {
         id: '5',
-        title: 'IoT Sensors: How They Monitor Water Quality',
-        description: 'Learn how Internet of Things sensors work to continuously monitor water quality parameters and provide real-time data.',
+        title: t('education.resources.iotSensors'),
+        description: t('education.resources.iotSensorsDesc'),
         type: 'video',
         category: 'technology',
         duration: '8 minutes',
@@ -100,8 +101,8 @@ const Education = () => {
       },
       {
         id: '6',
-        title: 'Water Safety Infographic',
-        description: 'Visual guide to water safety best practices, warning signs, and emergency contacts. Perfect for printing and sharing.',
+        title: t('education.resources.safetyInfographic'),
+        description: t('education.resources.safetyInfographicDesc'),
         type: 'infographic',
         category: 'safety',
         author: 'Public Health Department',
@@ -113,16 +114,16 @@ const Education = () => {
     ];
 
     setResources(mockResources);
-  }, []);
+  }, [t]);
 
   const categories = [
-    { value: 'all', label: 'All Resources', icon: BookOpen },
-    { value: 'water-quality', label: 'Water Quality', icon: Droplets },
-    { value: 'testing', label: 'Testing Methods', icon: Eye },
-    { value: 'contamination', label: 'Contamination', icon: AlertTriangle },
-    { value: 'emergency', label: 'Emergency Procedures', icon: Shield },
-    { value: 'technology', label: 'Technology', icon: Zap },
-    { value: 'safety', label: 'Safety Guidelines', icon: Shield }
+    { value: 'all', label: t('education.categories.all'), icon: BookOpen },
+    { value: 'water-quality', label: t('education.categories.waterQuality'), icon: Droplets },
+    { value: 'testing', label: t('education.categories.testing'), icon: Eye },
+    { value: 'contamination', label: t('education.categories.contamination'), icon: AlertTriangle },
+    { value: 'emergency', label: t('education.categories.emergency'), icon: Shield },
+    { value: 'technology', label: t('education.categories.technology'), icon: Zap },
+    { value: 'safety', label: t('education.categories.safety'), icon: Shield }
   ];
 
   const getTypeIcon = (type: string) => {
@@ -168,10 +169,9 @@ const Education = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
             <BookOpen className="h-8 w-8 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Educational Resources</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">{t('education.title')}</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Learn about water safety, quality monitoring, emergency procedures, and prevention measures. 
-            Knowledge is your first line of defense against water hazards.
+            {t('education.subtitle')}
           </p>
         </motion.div>
 
@@ -183,11 +183,11 @@ const Education = () => {
           className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8"
         >
           {[
-            { label: 'Total Resources', value: resources.length, icon: BookOpen },
-            { label: 'Video Tutorials', value: resources.filter(r => r.type === 'video').length, icon: Play },
-            { label: 'Downloadable Guides', value: resources.filter(r => r.downloadUrl).length, icon: Download },
-            { label: 'Categories', value: categories.length - 1, icon: Eye }
-          ].map((stat, index) => (
+            { label: t('education.stats.totalResources'), value: resources.length, icon: BookOpen },
+            { label: t('education.stats.videoTutorials'), value: resources.filter(r => r.type === 'video').length, icon: Play },
+            { label: t('education.stats.downloadableGuides'), value: resources.filter(r => r.downloadUrl).length, icon: Download },
+            { label: t('education.stats.categoriesCount'), value: categories.length - 1, icon: Eye }
+          ].map((stat) => (
             <div key={stat.label} className="bg-white rounded-lg shadow-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -209,7 +209,7 @@ const Education = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="bg-white rounded-lg shadow-lg p-6 mb-8"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Browse by Category</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('education.browseByCategory')}</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
             {categories.map((category) => (
               <button
@@ -251,7 +251,7 @@ const Education = () => {
                   <div className="absolute top-4 left-4">
                     <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${getTypeColor(resource.type)}`}>
                       <TypeIcon className="h-3 w-3 mr-1" />
-                      {resource.type.charAt(0).toUpperCase() + resource.type.slice(1)}
+                      {t(`education.resourceTypes.${resource.type}`)}
                     </span>
                   </div>
                   {resource.duration && (
@@ -287,7 +287,7 @@ const Education = () => {
                     ))}
                     {resource.tags.length > 3 && (
                       <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">
-                        +{resource.tags.length - 3} more
+                        {t('education.moreTags', { count: resource.tags.length - 3 })}
                       </span>
                     )}
                   </div>
@@ -297,21 +297,21 @@ const Education = () => {
                     {resource.type === 'video' && (
                       <button className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
                         <Play className="h-4 w-4" />
-                        <span>Watch Video</span>
+                        <span>{t('education.labels.watchVideo')}</span>
                       </button>
                     )}
                     
                     {resource.downloadUrl && (
                       <button className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
                         <Download className="h-4 w-4" />
-                        <span>Download</span>
+                        <span>{t('education.labels.downloadGuide')}</span>
                       </button>
                     )}
                     
                     {!resource.videoUrl && !resource.downloadUrl && (
                       <button className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                         <ExternalLink className="h-4 w-4" />
-                        <span>Read More</span>
+                        <span>{t('education.labels.readMore')}</span>
                       </button>
                     )}
                     
@@ -334,29 +334,29 @@ const Education = () => {
         >
           <div className="flex items-center mb-4">
             <AlertTriangle className="h-8 w-8 text-red-600 mr-3" />
-            <h2 className="text-2xl font-bold text-red-800">Emergency Resources</h2>
+            <h2 className="text-2xl font-bold text-red-800">{t('education.emergency.title')}</h2>
           </div>
           <p className="text-red-700 mb-6">
-            Quick access to essential emergency information and contacts for water-related emergencies.
+            {t('education.emergency.subtitle')}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white rounded-lg p-4 border border-red-200">
-              <h3 className="font-semibold text-red-800 mb-2">Emergency Contacts</h3>
-              <p className="text-sm text-red-700 mb-2">Emergency Services: 911</p>
-              <p className="text-sm text-red-700 mb-2">Water Authority: (555) 123-4567</p>
-              <p className="text-sm text-red-700">Poison Control: (800) 222-1222</p>
+              <h3 className="font-semibold text-red-800 mb-2">{t('education.emergency.contacts')}</h3>
+              <p className="text-sm text-red-700 mb-2">{t('education.emergency.contactsList.emergencyServices')}</p>
+              <p className="text-sm text-red-700 mb-2">{t('education.emergency.contactsList.waterAuthority')}</p>
+              <p className="text-sm text-red-700">{t('education.emergency.contactsList.poisonControl')}</p>
             </div>
             <div className="bg-white rounded-lg p-4 border border-red-200">
-              <h3 className="font-semibold text-red-800 mb-2">Quick Actions</h3>
-              <p className="text-sm text-red-700 mb-2">• Stop using contaminated water</p>
-              <p className="text-sm text-red-700 mb-2">• Report hazards immediately</p>
-              <p className="text-sm text-red-700">• Follow evacuation orders</p>
+              <h3 className="font-semibold text-red-800 mb-2">{t('education.emergency.quickActionsTitle')}</h3>
+              <p className="text-sm text-red-700 mb-2">• {t('education.emergency.quickActions.stopUsing')}</p>
+              <p className="text-sm text-red-700 mb-2">• {t('education.emergency.quickActions.reportHazards')}</p>
+              <p className="text-sm text-red-700">• {t('education.emergency.quickActions.followEvacuation')}</p>
             </div>
             <div className="bg-white rounded-lg p-4 border border-red-200">
-              <h3 className="font-semibold text-red-800 mb-2">Emergency Kit</h3>
-              <p className="text-sm text-red-700 mb-2">• 1 gallon water per person/day</p>
-              <p className="text-sm text-red-700 mb-2">• Water purification tablets</p>
-              <p className="text-sm text-red-700">• Battery-powered radio</p>
+              <h3 className="font-semibold text-red-800 mb-2">{t('education.emergency.kitTitle')}</h3>
+              <p className="text-sm text-red-700 mb-2">• {t('education.emergency.kitItems.waterPerPerson')}</p>
+              <p className="text-sm text-red-700 mb-2">• {t('education.emergency.kitItems.purificationTablets')}</p>
+              <p className="text-sm text-red-700">• {t('education.emergency.kitItems.batteryRadio')}</p>
             </div>
           </div>
         </motion.div>

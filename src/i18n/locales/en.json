@@ -1,0 +1,454 @@
+{
+  "navigation": {
+    "home": "Home",
+    "hazardMap": "Hazard Map",
+    "reportHazard": "Report Hazard",
+    "iotDashboard": "IoT Dashboard",
+    "emergencyAlerts": "Emergency Alerts",
+    "community": "Community",
+    "education": "Education",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "header": {
+    "title": "AQUA ALERT"
+  },
+  "home": {
+    "title": "Water Safety Monitoring System",
+    "subtitle": "Real-time water hazard alerts and community reporting",
+    "getStarted": "Get Started",
+    "hero": {
+      "title1": "Protecting Communities Through",
+      "title2": "Water Safety Monitoring",
+      "subtitle": "Join thousands of citizens in creating safer water environments through real-time monitoring, community reporting, and emergency response coordination.",
+      "cta": {
+        "map": "View Hazard Map",
+        "report": "Report Emergency"
+      }
+    },
+    "stats": {
+      "activeSensors": "Active Sensors",
+      "reportsFiled": "Reports Filed",
+      "communityMembers": "Community Members",
+      "areasMonitored": "Areas Monitored"
+    },
+    "features": {
+      "sectionTitle": "Comprehensive Water Safety Platform",
+      "sectionSubtitle": "Advanced technology meets community action to create the most effective water monitoring system",
+      "interactiveMap": {
+        "title": "Interactive Hazard Map",
+        "description": "Real-time visualization of water hazards reported by the community"
+      },
+      "emergencyReporting": {
+        "title": "Emergency Reporting",
+        "description": "Quick and easy hazard reporting with voice activation support"
+      },
+      "iotMonitoring": {
+        "title": "IoT Monitoring",
+        "description": "Live sensor data tracking water quality parameters across locations"
+      },
+      "communityDriven": {
+        "title": "Community Driven",
+        "description": "Connect with neighbors and organize water safety initiatives"
+      }
+    },
+    "emergencyBanner": {
+      "title": "24/7 Emergency Monitoring",
+      "subtitle": "Real-time alerts from INCOIS for tsunamis, floods, and water emergencies",
+      "ctaViewAlerts": "View Alerts"
+    },
+    "cta": {
+      "title": "Ready to Make Your Community Safer?",
+      "subtitle": "Join Project Aqua Alert today and be part of the solution for water safety in your area.",
+      "buttons": {
+        "getStarted": "Get Started Today",
+        "learnMore": "Learn More"
+      }
+    },
+    "live": "Live",
+    "severity": {
+      "criticalLabel": "Critical Alert",
+      "highLabel": "High Severity Alert",
+      "mediumLabel": "Medium Severity Alert",
+      "lowLabel": "Low Severity Alert",
+      "alert": "Alert"
+    }
+  },
+  "reportHazard": {
+    "title": "Report Water Hazard",
+    "subtitle": "Help keep your community safe by reporting water hazards",
+    "emergency": "Emergency Situations",
+    "emergencyDesc": "For immediate life-threatening emergencies, call 911 first, then submit this report",
+    "hazardType": "What type of hazard are you reporting?",
+    "severity": "How severe is this hazard?",
+    "title_label": "Brief Title",
+    "title_placeholder": "e.g., Chemical spill near Main Street bridge",
+    "description": "Detailed Description",
+    "descriptionHelper": "(Highly recommended)",
+    "description_placeholder": "Describe what you observed, when it happened, and any other relevant details...",
+    "location": "Location",
+    "useCurrentLocation": "Use Current",
+    "gettingLocation": "Getting...",
+    "location_placeholder": "Enter address or coordinates",
+    "photos": "Photos",
+    "photoDesc": "Click to upload photos or drag and drop",
+    "photoHint": "PNG, JPG, GIF up to 10MB each",
+    "contactInfo": "Contact Information (Optional)",
+    "contact_placeholder": "Phone number or email for follow-up",
+    "anonymous": "Submit this report anonymously",
+    "submit": "Submit Report",
+    "submitting": "Submitting...",
+    "success": "Hazard Report Submitted",
+    "successMsg": "Your report has been submitted successfully. Emergency services have been notified.",
+    "error": "Submission Failed",
+    "errorMsg": "There was an error submitting your report. Please try again.",
+    "types": {
+      "contamination": "Water Contamination",
+      "flooding": "Flooding/High Water",
+      "chemical": "Chemical Spill",
+      "temperature": "Temperature Anomaly",
+      "infrastructure": "Infrastructure Damage",
+      "other": "Other Hazard"
+    },
+    "severityLevels": {
+      "low": {
+        "label": "Low",
+        "description": "Minor concern, no immediate danger"
+      },
+      "medium": {
+        "label": "Medium",
+        "description": "Moderate risk, attention needed"
+      },
+      "high": {
+        "label": "High",
+        "description": "Significant risk, urgent response needed"
+      },
+      "critical": {
+        "label": "Critical",
+        "description": "Immediate danger, emergency response required"
+      }
+    },
+    "voice": {
+      "recordingHint": "Recording... Speak clearly and tap the microphone to stop."
+    },
+    "validation": {
+      "selectType": "Please select a hazard type",
+      "selectSeverity": "Please select a severity level",
+      "provideTitle": "Please provide a brief title",
+      "provideLocation": "Please provide the location"
+    }
+  },
+  "hazardMap": {
+    "title": "Interactive Hazard Map",
+    "subtitle": "Real-time visualization of water hazards reported by the community",
+    "filters": "Filters",
+    "hazardType": "Hazard Type",
+    "severity": "Severity",
+    "status": "Status",
+    "dateRange": "Date Range",
+    "showing": "Showing",
+    "of": "of",
+    "reports": "hazard reports and alerts",
+    "verified": "VERIFIED",
+    "unverified": "UNVERIFIED",
+    "officialAlert": "Official Alert",
+    "legend": "Map Legend",
+    "severityLevels": "Severity Levels",
+    "hazardTypes": "Hazard Types",
+    "allTypes": "All Types",
+    "allSeverities": "All Severities",
+    "allStatuses": "All Statuses",
+    "last24Hours": "Last 24 hours",
+    "last7Days": "Last 7 days",
+    "last30Days": "Last 30 days",
+    "last90Days": "Last 90 days",
+    "types": {
+      "contamination": "Contamination",
+      "flooding": "Flooding",
+      "chemical": "Chemical",
+      "temperature": "Temperature",
+      "warning": "Official Alerts",
+      "other": "Other"
+    },
+    "severities": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "statuses": {
+      "active": "Active",
+      "investigating": "Investigating",
+      "resolved": "Resolved"
+    },
+    "legendItems": {
+      "critical": "Immediate danger",
+      "high": "Significant risk",
+      "medium": "Moderate concern",
+      "low": "Minor issue",
+      "contaminationDesc": "Water quality issues",
+      "floodingDesc": "Water level emergencies",
+      "chemicalDesc": "Chemical hazards",
+      "temperatureDesc": "Temperature anomalies"
+    },
+    "popupLabels": {
+      "severity": "Severity:",
+      "status": "Status:",
+      "reported": "Reported:",
+      "source": "Source:"
+    }
+  },
+  "iotDashboard": {
+    "title": "IoT Water Monitoring Dashboard",
+    "subtitle": "Real-time sensor data from water quality monitoring stations",
+    "lastUpdate": "Last Update:",
+    "autoRefresh": "Auto Refresh",
+    "stats": {
+      "onlineSensors": "Online Sensors",
+      "warningAlerts": "Warning Alerts",
+      "offlineSensors": "Offline Sensors",
+      "criticalAlerts": "Critical Alerts"
+    },
+    "status": {
+      "online": "Online",
+      "offline": "Offline",
+      "warning": "Warning"
+    },
+    "parameters": {
+      "ph": "pH Level",
+      "temperature": "Temperature",
+      "conductivity": "Conductivity",
+      "salinity": "Salinity",
+      "turbidity": "Turbidity",
+      "dissolvedOxygen": "Dissolved Oxygen",
+      "waterLevel": "Water Level",
+      "orp": "ORP"
+    },
+    "labels": {
+      "location": "Location",
+      "lastUpdate": "Last Update",
+      "status": "Status",
+      "viewTrends": "View Trends"
+    }
+  },
+  "emergencyAlerts": {
+    "title": "Emergency Alerts",
+    "subtitle": "Active emergency alerts and warnings from official sources",
+    "soundEnabled": "Sound Enabled",
+    "filter": {
+      "all": "All Alerts",
+      "active": "Active Only",
+      "watch": "Watch",
+      "warning": "Warning",
+      "emergency": "Emergency"
+    },
+    "stats": {
+      "activeAlerts": "Active Alerts",
+      "emergencyLevel": "Emergency Level",
+      "warnings": "Warnings",
+      "watches": "Watches"
+    },
+    "severity": {
+      "watch": "WATCH",
+      "warning": "WARNING",
+      "emergency": "EMERGENCY"
+    },
+    "status": {
+      "active": "Active",
+      "expired": "Expired",
+      "cancelled": "Cancelled"
+    },
+    "labels": {
+      "issuedAt": "Issued:",
+      "expiresAt": "Expires:",
+      "source": "Source:",
+      "affectedAreas": "Affected Areas:",
+      "instructions": "Instructions:",
+      "remaining": "remaining",
+      "expired": "Expired",
+      "timeRemainingHours": "{{hours}}h {{minutes}}m remaining",
+      "timeRemainingMinutes": "{{minutes}}m remaining",
+      "viewOnMap": "View on Map",
+      "setReminder": "Set Reminder"
+    },
+    "noAlerts": "No Active Alerts",
+    "noAlertsDesc": "There are currently no emergency alerts for your area. Stay safe and check back regularly for updates.",
+    "noAlertsFilter": "No alerts match the selected filter: {{filter}}",
+    "showing": "Showing",
+    "of": "of",
+    "alerts": "alerts"
+  },
+  "community": {
+    "title": "Community Hub",
+    "subtitle": "Connect, share, and collaborate on water safety",
+    "tabs": {
+      "forum": "Discussion Forum",
+      "events": "Cleanup Events",
+      "reports": "Hazard Reports"
+    },
+    "search": "Search discussions...",
+    "category": "Category",
+    "allCategories": "All Categories",
+    "categories": {
+      "waterQuality": "Water Quality",
+      "cleanup": "Cleanup Events",
+      "technology": "Technology",
+      "education": "Education",
+      "emergency": "Emergency"
+    },
+    "forum": {
+      "newPost": "New Post",
+      "replies": "replies",
+      "likes": "likes",
+      "viewDiscussion": "View Discussion",
+      "share": "Share"
+    },
+    "events": {
+      "newEvent": "Create Event",
+      "organizeEvent": "Organize Cleanup Event",
+      "participants": "Participants",
+      "maxParticipants": "Max",
+      "date": "Date",
+      "time": "Time",
+      "location": "Location",
+      "organizer": "Organizer",
+      "joinEvent": "Join Event",
+      "details": "Details",
+      "registrationProgress": "Registration Progress",
+      "status": {
+        "upcoming": "Upcoming",
+        "ongoing": "Ongoing",
+        "completed": "Completed"
+      }
+    },
+    "hazardReports": {
+      "title": "Recent Hazard Reports",
+      "reportedBy": "Reported by",
+      "verified": "Verified",
+      "unverified": "Unverified",
+      "viewOnMap": "View on Map",
+      "severity": "Severity",
+      "ago": "ago"
+    },
+    "recentReports": "Recent Hazard Reports",
+    "participantsLabel": "{{count}}/{{max}} participants",
+    "organizedBy": "Organized by",
+    "registrationProgress": "Registration Progress",
+    "noRecentReportsTitle": "No Recent Reports",
+    "noRecentReportsDesc": "There are no community hazard reports at this time. Be the first to report a hazard if you notice one.",
+    "noDescription": "No description provided",
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    },
+    "eventTitles": {
+      "harborAssessment": "Harbor District Water Quality Assessment",
+      "riverCleanup": "Community River Cleanup",
+      "waterTestingWorkshop": "Educational Workshop: Water Testing"
+    },
+    "eventDescriptions": {
+      "harborAssessment": "Join us for a comprehensive water quality assessment in the harbor district. We'll be collecting samples and documenting any issues found.",
+      "riverCleanup": "Monthly river cleanup event. Bring gloves and water bottles - all other equipment provided. Great for families!",
+      "waterTestingWorkshop": "Learn how to test water quality at home and understand the results. Perfect for new community members."
+    },
+    "eventLocations": {
+      "harborMarina": "Harbor District Marina",
+      "riversidePark": "Riverside Park Entrance",
+      "communityCenter": "Community Center"
+    },
+    "eventOrganizers": {
+      "environmentalAction": "Environmental Action Group",
+      "riverGuardians": "River Guardians",
+      "aquaAlertTeam": "Aqua Alert Education Team"
+    }
+  },
+  "education": {
+    "title": "Educational Resources",
+    "subtitle": "Learn about water safety, quality monitoring, emergency procedures, and prevention measures. Knowledge is your first line of defense against water hazards.",
+    "stats": {
+      "articles": "Articles",
+      "videos": "Videos",
+      "guides": "Guides",
+      "infographics": "Infographics",
+      "totalResources": "Total Resources",
+      "videoTutorials": "Video Tutorials",
+      "downloadableGuides": "Downloadable Guides",
+      "categoriesCount": "Categories"
+    },
+    "categories": {
+      "all": "All Resources",
+      "waterQuality": "Water Quality",
+      "testing": "Testing Methods",
+      "contamination": "Contamination",
+      "emergency": "Emergency Procedures",
+      "technology": "Technology",
+      "safety": "Safety Guidelines"
+    },
+    "resourceTypes": {
+      "article": "Article",
+      "video": "Video",
+      "guide": "Guide",
+      "infographic": "Infographic"
+    },
+    "browseByCategory": "Browse by Category",
+    "moreTags": "+{{count}} more",
+    "resources": {
+      "waterQualityParams": "Understanding Water Quality Parameters",
+      "waterQualityParamsDesc": "Learn about pH, turbidity, dissolved oxygen, and other key indicators of water quality. This comprehensive guide covers what each parameter means and why it matters.",
+      "testWaterAtHome": "How to Test Water Quality at Home",
+      "testWaterAtHomeDesc": "Step-by-step video tutorial showing you how to test your water quality using simple home testing kits and interpret the results.",
+      "contaminationTypes": "Water Contamination Types and Sources",
+      "contaminationTypesDesc": "Comprehensive guide to different types of water contamination, their sources, health effects, and prevention methods.",
+      "emergencyProcedures": "Emergency Water Safety Procedures",
+      "emergencyProceduresDesc": "What to do during water emergencies: flooding, contamination alerts, and infrastructure failures. Essential knowledge for every community member.",
+      "iotSensors": "IoT Sensors: How They Monitor Water Quality",
+      "iotSensorsDesc": "Learn how Internet of Things sensors work to continuously monitor water quality parameters and provide real-time data.",
+      "safetyInfographic": "Water Safety Infographic",
+      "safetyInfographicDesc": "Visual guide to water safety best practices, warning signs, and emergency contacts. Perfect for printing and sharing."
+    },
+    "labels": {
+      "author": "By",
+      "published": "Published",
+      "duration": "Duration",
+      "readMore": "Read More",
+      "watchVideo": "Watch Video",
+      "downloadGuide": "Download Guide",
+      "viewInfographic": "View Infographic"
+    },
+    "emergency": {
+      "title": "Emergency Response Resources",
+      "subtitle": "Quick access to critical information",
+      "contacts": "Emergency Contacts",
+      "procedures": "Safety Procedures",
+      "firstAid": "First Aid for Water Contamination",
+      "contactsList": {
+        "emergencyServices": "Emergency Services: 911",
+        "waterAuthority": "Water Authority: (555) 123-4567",
+        "poisonControl": "Poison Control: (800) 222-1222"
+      },
+      "quickActionsTitle": "Quick Actions",
+      "quickActions": {
+        "stopUsing": "Stop using contaminated water",
+        "reportHazards": "Report hazards immediately",
+        "followEvacuation": "Follow evacuation orders"
+      },
+      "kitTitle": "Emergency Kit",
+      "kitItems": {
+        "waterPerPerson": "1 gallon water per person/day",
+        "purificationTablets": "Water purification tablets",
+        "batteryRadio": "Battery-powered radio"
+      }
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "close": "Close"
+  }
+}

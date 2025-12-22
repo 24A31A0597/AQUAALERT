@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   User, 
   MapPin, 
   Bell, 
-  Shield, 
-  Settings,
   Edit3,
   Save,
   X,
@@ -24,14 +22,13 @@ const Profile = () => {
   const [profileData, setProfileData] = useState({
     name: user?.name || 'John Doe',
     email: user?.email || 'john.doe@example.com',
-    phone: '+1 (555) 123-4567',
-    location: 'New York, NY',
+    location: 'Kakinada, AP',
     bio: 'Environmental enthusiast committed to water safety and community protection.',
     joinedDate: '2023-06-15',
     savedLocations: [
-      { id: '1', name: 'Home', address: '123 Main St, New York, NY', coordinates: [40.7128, -74.0060] },
-      { id: '2', name: 'Work', address: '456 Business Ave, New York, NY', coordinates: [40.7589, -73.9851] },
-      { id: '3', name: 'School', address: '789 Education Blvd, New York, NY', coordinates: [40.7282, -73.7949] }
+      { id: '1', name: 'Kakinada Beach (Uppada Coast)', address: 'Coastal Area - Prone to cyclones, storm surges, and high tides', coordinates: [16.9891, 82.2475] },
+      { id: '2', name: 'Godavari River – Coringa Region', address: 'River / Estuary Zone - Flood risk during monsoon, salinity intrusion', coordinates: [16.7505, 82.3308] },
+      { id: '3', name: 'Coringa Mangrove Forest Area', address: 'Ecologically Sensitive Zone - Mangrove protection, water pollution risks', coordinates: [16.7270, 82.2864] }
     ],
     notificationSettings: {
       emergencyAlerts: true,
@@ -56,7 +53,7 @@ const Profile = () => {
       type: 'report',
       title: 'Reported water contamination',
       location: 'Downtown District',
-      date: '2024-01-15',
+      date: '2025-01-12',
       status: 'resolved'
     },
     {
@@ -64,7 +61,7 @@ const Profile = () => {
       type: 'event',
       title: 'Attended beach cleanup',
       location: 'Coastal Park',
-      date: '2024-01-12',
+      date: '2025-08-12',
       status: 'completed'
     },
     {
@@ -72,7 +69,7 @@ const Profile = () => {
       type: 'comment',
       title: 'Commented on forum discussion',
       location: 'Community Forum',
-      date: '2024-01-10',
+      date: '2025-12-12',
       status: 'active'
     }
   ];
@@ -118,11 +115,9 @@ const Profile = () => {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="flex items-center space-x-6">
               <div className="relative">
-                <img
-                  src={user?.avatar || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1'}
-                  alt="Profile"
-                  className="w-24 h-24 rounded-full object-cover border-4 border-blue-100"
-                />
+                <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center border-4 border-blue-100">
+                  <User className="h-12 w-12 text-blue-600" />
+                </div>
                 <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white rounded-full p-2">
                   <Award className="h-4 w-4" />
                 </div>
@@ -161,7 +156,7 @@ const Profile = () => {
             { label: 'Events Attended', value: userStats.eventsAttended, icon: Calendar, color: 'text-green-600 bg-green-100' },
             { label: 'Community Points', value: userStats.pointsEarned, icon: Award, color: 'text-blue-600 bg-blue-100' },
             { label: 'Saved Locations', value: profileData.savedLocations.length, icon: MapPin, color: 'text-purple-600 bg-purple-100' }
-          ].map((stat, index) => (
+          ].map((stat) => (
             <div key={stat.label} className="bg-white rounded-lg shadow-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -236,19 +231,6 @@ const Profile = () => {
                       />
                     ) : (
                       <p className="text-gray-900">{profileData.email}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                    {isEditing ? (
-                      <input
-                        type="tel"
-                        value={profileData.phone}
-                        onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      />
-                    ) : (
-                      <p className="text-gray-900">{profileData.phone}</p>
                     )}
                   </div>
                   <div>

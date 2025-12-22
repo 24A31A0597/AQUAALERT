@@ -1,0 +1,440 @@
+{
+  "navigation": {
+    "home": "होम",
+    "hazardMap": "खतरा मानचित्र",
+    "reportHazard": "खतरे की रिपोर्ट करें",
+    "iotDashboard": "IoT डैशबोर्ड",
+    "emergencyAlerts": "आपातकालीन सतर्कता",
+    "community": "समुदाय",
+    "education": "शिक्षा",
+    "login": "लॉगिन",
+    "register": "पंजीकरण",
+    "logout": "लॉग आउट"
+  },
+  "header": {
+    "title": "एक्वा अलर्ट"
+  },
+  "home": {
+    "title": "जल सुरक्षा निगरानी प्रणाली",
+    "subtitle": "रीयल-टाइम जल खतरे की चेतावनी और समुदाय रिपोर्टिंग",
+    "getStarted": "शुरू करें",
+    "hero": {
+      "title1": "समुदायों की रक्षा",
+      "title2": "जल सुरक्षा निगरानी के माध्यम से",
+      "subtitle": "रीयल-टाइम मॉनिटरिंग, समुदाय रिपोर्टिंग और आपातकालीन प्रतिक्रिया के माध्यम से सुरक्षित जल पर्यावरण बनाने में हजारों नागरिकों से जुड़ें।",
+      "cta": {
+        "map": "खतरा मानचित्र देखें",
+        "report": "आपातकाल रिपोर्ट करें"
+      }
+    },
+    "stats": {
+      "activeSensors": "सक्रिय सेंसर",
+      "reportsFiled": "दर्ज रिपोर्ट",
+      "communityMembers": "समुदाय सदस्य",
+      "areasMonitored": "निरीक्षित क्षेत्र"
+    },
+    "features": {
+      "sectionTitle": "व्यापक जल सुरक्षा प्लेटफ़ॉर्म",
+      "sectionSubtitle": "उन्नत तकनीक और समुदाय कार्रवाई मिलकर सबसे प्रभावी जल निगरानी प्रणाली बनाते हैं",
+      "interactiveMap": {
+        "title": "इंटरेक्टिव खतरा मानचित्र",
+        "description": "समुदाय द्वारा रिपोर्ट किए गए जल खतरों का रीयल-टाइम दृश्य"
+      },
+      "emergencyReporting": {
+        "title": "आपातकालीन रिपोर्टिंग",
+        "description": "वॉयस एक्टिवेशन सपोर्ट के साथ तेज और आसान रिपोर्टिंग"
+      },
+      "iotMonitoring": {
+        "title": "IoT मॉनिटरिंग",
+        "description": "विभिन्न स्थानों पर जल गुणवत्ता पैरामीटर्स का लाइव सेंसर डेटा"
+      },
+      "communityDriven": {
+        "title": "समुदाय संचालित",
+        "description": "पड़ोसियों से जुड़ें और जल सुरक्षा पहल आयोजित करें"
+      }
+    },
+    "emergencyBanner": {
+      "title": "24/7 आपातकालीन निगरानी",
+      "subtitle": "सुनामी, बाढ़ और जल आपातकाल के लिए INCOIS से रीयल-टाइम अलर्ट",
+      "ctaViewAlerts": "अलर्ट देखें"
+    },
+    "cta": {
+      "title": "क्या आप अपने समुदाय को सुरक्षित बनाना चाहते हैं?",
+      "subtitle": "आज ही प्रोजेक्ट एक्वा अलर्ट से जुड़ें और अपने क्षेत्र में जल सुरक्षा समाधान का हिस्सा बनें।",
+      "buttons": {
+        "getStarted": "आज ही शुरू करें",
+        "learnMore": "और जानें"
+      }
+    },
+    "live": "लाइव",
+    "severity": {
+      "criticalLabel": "गंभीर चेतावनी",
+      "highLabel": "उच्च गंभीरता चेतावनी",
+      "mediumLabel": "मध्यम गंभीरता चेतावनी",
+      "lowLabel": "कम गंभीरता चेतावनी",
+      "alert": "चेतावनी"
+    }
+  },
+  "reportHazard": {
+    "title": "जल खतरे की रिपोर्ट करें",
+    "subtitle": "अपने समुदाय को सुरक्षित रखने में मदद करने के लिए जल खतरों की रिपोर्ट करें",
+    "emergency": "आपातकालीन स्थितियाँ",
+    "emergencyDesc": "तत्काल जीवन के लिए खतरनाक आपातकाल के लिए, पहले 911 कॉल करें, फिर यह रिपोर्ट जमा करें",
+    "hazardType": "आप किस प्रकार का खतरा रिपोर्ट कर रहे हैं?",
+    "severity": "यह खतरा कितना गंभीर है?",
+    "title_label": "संक्षिप्त शीर्षक",
+    "title_placeholder": "उदा., मेन स्ट्रीट पुल के पास रसायन रिसाव",
+    "description": "विस्तृत विवरण",
+    "descriptionHelper": "(अत्यधिक अनुशंसित)",
+    "description_placeholder": "आपने क्या देखा, कब हुआ, और अन्य संबंधित विवरण...",
+    "location": "स्थान",
+    "useCurrentLocation": "वर्तमान स्थान का उपयोग करें",
+    "gettingLocation": "प्राप्त कर रहा है...",
+    "location_placeholder": "पता या निर्देशांक दर्ज करें",
+    "photos": "तस्वीरें",
+    "photoDesc": "फ़ोटो अपलोड करने के लिए क्लिक करें या खींचें और छोड़ें",
+    "photoHint": "PNG, JPG, GIF प्रत्येक अधिकतम 10MB",
+    "contactInfo": "संपर्क जानकारी (वैकल्पिक)",
+    "contact_placeholder": "फॉलो-अप के लिए फोन नंबर या ईमेल",
+    "anonymous": "इस रिपोर्ट को गुमनाम रूप से जमा करें",
+    "submit": "रिपोर्ट जमा करें",
+    "submitting": "जमा किया जा रहा है...",
+    "success": "खतरे की रिपोर्ट जमा की गई",
+    "successMsg": "आपकी रिपोर्ट सफलतापूर्वक जमा की गई है। आपातकालीन सेवाओं को सूचित किया गया है।",
+    "error": "जमा करना विफल",
+    "errorMsg": "आपकी रिपोर्ट जमा करने में त्रुटि थी। कृपया दोबारा कोशिश करें।",
+    "types": {
+      "contamination": "जल प्रदूषण",
+      "flooding": "बाढ़/उच्च जल",
+      "chemical": "रसायन रिसाव",
+      "temperature": "तापमान विषमता",
+      "infrastructure": "आधारभूत संरचना क्षति",
+      "other": "अन्य खतरा"
+    },
+    "severityLevels": {
+      "low": { "label": "कम", "description": "हल्की चिंता, कोई तत्काल खतरा नहीं" },
+      "medium": { "label": "मध्यम", "description": "मध्यम जोखिम, ध्यान आवश्यक" },
+      "high": { "label": "उच्च", "description": "महत्वपूर्ण जोखिम, तत्काल प्रतिक्रिया आवश्यक" },
+      "critical": { "label": "गंभीर", "description": "तत्काल खतरा, आपातकालीन प्रतिक्रिया आवश्यक" }
+    },
+    "voice": { "recordingHint": "रिकॉर्डिंग... स्पष्ट रूप से बोलें और माइक्रोफोन टैप कर रोकें।" },
+    "validation": {
+      "selectType": "कृपया खतरे का प्रकार चुनें",
+      "selectSeverity": "कृपया गंभीरता स्तर चुनें",
+      "provideTitle": "कृपया एक संक्षिप्त शीर्षक प्रदान करें",
+      "provideLocation": "कृपया स्थान प्रदान करें"
+    }
+  },
+  "hazardMap": {
+    "title": "इंटरेक्टिव खतरा मानचित्र",
+    "subtitle": "समुदाय द्वारा रिपोर्ट किए गए जल खतरों का रीयल-टाइम दृश्य",
+    "filters": "फ़िल्टर",
+    "hazardType": "खतरे का प्रकार",
+    "severity": "गंभीरता",
+    "status": "स्थिति",
+    "dateRange": "तारीख की रेंज",
+    "showing": "दिखा रहा है",
+    "of": "का",
+    "reports": "खतरे की रिपोर्ट और अलर्ट",
+    "verified": "सत्यापित",
+    "unverified": "असत्यापित",
+    "officialAlert": "आधिकारिक अलर्ट",
+    "legend": "मानचित्र पौराणिक",
+    "severityLevels": "गंभीरता स्तर",
+    "hazardTypes": "खतरे के प्रकार",
+    "allTypes": "सभी प्रकार",
+    "allSeverities": "सभी गंभीरता",
+    "allStatuses": "सभी स्थितियां",
+    "last24Hours": "पिछले 24 घंटे",
+    "last7Days": "पिछले 7 दिन",
+    "last30Days": "पिछले 30 दिन",
+    "last90Days": "पिछले 90 दिन",
+    "types": {
+      "contamination": "प्रदूषण",
+      "flooding": "बाढ़",
+      "chemical": "रसायन",
+      "temperature": "तापमान",
+      "warning": "आधिकारिक अलर्ट",
+      "other": "अन्य"
+    },
+    "severities": {
+      "critical": "गंभीर",
+      "high": "उच्च",
+      "medium": "मध्यम",
+      "low": "कम"
+    },
+    "statuses": {
+      "active": "सक्रिय",
+      "investigating": "जांच",
+      "resolved": "हल हो गया"
+    },
+    "legendItems": {
+      "critical": "तत्काल खतरा",
+      "high": "महत्वपूर्ण जोखिम",
+      "medium": "मध्यम चिंता",
+      "low": "छोटी समस्या",
+      "contaminationDesc": "जल गुणवत्ता समस्याएं",
+      "floodingDesc": "जल स्तर आपातकाल",
+      "chemicalDesc": "रासायनिक खतरे",
+      "temperatureDesc": "तापमान विषमताएं"
+    },
+    "popupLabels": {
+      "severity": "गंभीरता:",
+      "status": "स्थिति:",
+      "reported": "रिपोर्ट किया:",
+      "source": "स्रोत:"
+    }
+  },
+  "iotDashboard": {
+    "title": "IoT जल निगरानी डैशबोर्ड",
+    "subtitle": "जल गुणवत्ता निगरानी स्टेशनों से रीयल-टाइम सेंसर डेटा",
+    "lastUpdate": "अंतिम अपडेट:",
+    "autoRefresh": "ऑटो रिफ्रेश",
+    "stats": {
+      "onlineSensors": "ऑनलाइन सेंसर",
+      "warningAlerts": "चेतावनी अलर्ट",
+      "offlineSensors": "ऑफलाइन सेंसर",
+      "criticalAlerts": "गंभीर अलर्ट"
+    },
+    "status": {
+      "online": "ऑनलाइन",
+      "offline": "ऑफलाइन",
+      "warning": "चेतावनी"
+    },
+    "parameters": {
+      "ph": "pH स्तर",
+      "temperature": "तापमान",
+      "conductivity": "चालकता",
+      "salinity": "लवणता",
+      "turbidity": "मैलापन",
+      "dissolvedOxygen": "घुलित ऑक्सीजन",
+      "waterLevel": "जल स्तर",
+      "orp": "ORP"
+    },
+    "labels": {
+      "location": "स्थान",
+      "lastUpdate": "अंतिम अपडेट",
+      "status": "स्थिति",
+      "viewTrends": "रुझान देखें"
+    }
+  },
+  "emergencyAlerts": {
+    "title": "आपातकालीन सतर्कता",
+    "subtitle": "आधिकारिक स्रोतों से सक्रिय आपातकालीन अलर्ट और चेतावनियां",
+    "soundEnabled": "ध्वनि सक्षम",
+    "filter": {
+      "all": "सभी अलर्ट",
+      "active": "केवल सक्रिय",
+      "watch": "वाच",
+      "warning": "चेतावनी",
+      "emergency": "आपातकाल"
+    },
+    "stats": {
+      "activeAlerts": "सक्रिय अलर्ट",
+      "emergencyLevel": "आपातकाल स्तर",
+      "warnings": "चेतावनियां",
+      "watches": "वाच"
+    },
+    "severity": {
+      "watch": "वाच",
+      "warning": "चेतावनी",
+      "emergency": "आपातकाल"
+    },
+    "status": {
+      "active": "सक्रिय",
+      "expired": "समाप्त",
+      "cancelled": "रद्द"
+    },
+    "labels": {
+      "issuedAt": "जारी:",
+      "expiresAt": "समाप्त:",
+      "source": "स्रोत:",
+      "affectedAreas": "प्रभावित क्षेत्र:",
+      "instructions": "निर्देश:",
+      "remaining": "बाकी",
+      "expired": "समाप्त",
+      "timeRemainingHours": "{{hours}}घं {{minutes}}मि बाकी",
+      "timeRemainingMinutes": "{{minutes}}मि बाकी",
+      "viewOnMap": "मानचित्र पर देखें",
+      "setReminder": "रिमाइंडर सेट करें"
+    },
+    "noAlerts": "कोई सक्रिय अलर्ट नहीं",
+    "noAlertsDesc": "आपके क्षेत्र के लिए वर्तमान में कोई आपातकालीन अलर्ट नहीं हैं। सुरक्षित रहें और अपडेट के लिए नियमित रूप से जांच करें।",
+    "noAlertsFilter": "चयनित फ़िल्टर से कोई अलर्ट मेल नहीं खाते: {{filter}}",
+    "showing": "दिखा रहा है",
+    "of": "का",
+    "alerts": "अलर्ट"
+  },
+  "community": {
+    "title": "समुदाय हब",
+    "subtitle": "जल सुरक्षा पर जुड़ें, साझा करें और सहयोग करें",
+    "tabs": {
+      "forum": "चर्चा मंच",
+      "events": "सफाई कार्यक्रम",
+      "reports": "खतरे की रिपोर्ट"
+    },
+    "search": "चर्चाएं खोजें...",
+    "category": "वर्ग",
+    "allCategories": "सभी वर्ग",
+    "categories": {
+      "waterQuality": "जल गुणवत्ता",
+      "cleanup": "सफाई कार्यक्रम",
+      "technology": "प्रौद्योगिकी",
+      "education": "शिक्षा",
+      "emergency": "आपातकाल"
+    },
+    "forum": {
+      "newPost": "नई पोस्ट",
+      "replies": "जवाब",
+      "likes": "पसंद",
+      "viewDiscussion": "चर्चा देखें",
+      "share": "साझा करें"
+    },
+    "events": {
+      "newEvent": "कार्यक्रम बनाएं",
+      "organizeEvent": "सफाई कार्यक्रम आयोजित करें",
+      "participants": "प्रतिभागी",
+      "maxParticipants": "अधिकतम",
+      "date": "तारीख",
+      "time": "समय",
+      "location": "स्थान",
+      "organizer": "आयोजक",
+      "joinEvent": "कार्यक्रम में शामिल हों",
+      "details": "विवरण",
+      "registrationProgress": "पंजीकरण प्रगति",
+      "status": {
+        "upcoming": "आगामी",
+        "ongoing": "चल रहा",
+        "completed": "पूर्ण"
+      }
+    },
+    "hazardReports": {
+      "title": "हाल की खतरे की रिपोर्ट",
+      "reportedBy": "रिपोर्ट करता",
+      "verified": "सत्यापित",
+      "unverified": "असत्यापित",
+      "viewOnMap": "मानचित्र पर देखें",
+      "severity": "गंभीरता",
+      "ago": "पहले"
+    },
+    "recentReports": "हाल की खतरे की रिपोर्ट",
+    "participantsLabel": "{{count}}/{{max}} प्रतिभागी",
+    "organizedBy": "द्वारा आयोजित",
+    "registrationProgress": "पंजीकरण प्रगति",
+    "noRecentReportsTitle": "कोई हाल की रिपोर्ट नहीं",
+    "noRecentReportsDesc": "वर्तमान में कोई सामुदायिक खतरे की रिपोर्ट नहीं है। यदि आप कोई खतरा देखते हैं तो रिपोर्ट करने वाले पहले व्यक्ति बनें।",
+    "noDescription": "कोई विवरण उपलब्ध नहीं",
+    "time": {
+      "justNow": "अभी",
+      "minutesAgo": "{{count}}मि पहले",
+      "hoursAgo": "{{count}}घं पहले",
+      "daysAgo": "{{count}}दिन पहले"
+    },
+    "eventTitles": {
+      "harborAssessment": "हार्बर जिला जल गुणवत्ता मूल्यांकन",
+      "riverCleanup": "सामुदायिक नदी सफाई",
+      "waterTestingWorkshop": "शैक्षिक कार्यशाला: जल परीक्षण"
+    },
+    "eventDescriptions": {
+      "harborAssessment": "हार्बर जिले में व्यापक जल गुणवत्ता मूल्यांकन के लिए हमसे जुड़ें। हम नमूने एकत्र करेंगे और पाई गई किसी भी समस्या का दस्तावेजीकरण करेंगे।",
+      "riverCleanup": "मासिक नदी सफाई कार्यक्रम। दस्ताने और पानी की बोतलें लाएं - अन्य सभी उपकरण प्रदान किए जाएंगे। परिवारों के लिए बढ़िया!",
+      "waterTestingWorkshop": "घर पर पानी की गुणवत्ता का परीक्षण कैसे करें और परिणामों को समझें। नए समुदाय सदस्यों के लिए एकदम सही।"
+    },
+    "eventLocations": {
+      "harborMarina": "हार्बर जिला मरीना",
+      "riversidePark": "रिवरसाइड पार्क प्रवेश द्वार",
+      "communityCenter": "सामुदायिक केंद्र"
+    },
+    "eventOrganizers": {
+      "environmentalAction": "पर्यावरण कार्य समूह",
+      "riverGuardians": "नदी संरक्षक",
+      "aquaAlertTeam": "एक्वा अलर्ट शिक्षा टीम"
+    }
+  },
+  "education": {
+    "title": "शैक्षिक संसाधन",
+    "subtitle": "जल सुरक्षा, गुणवत्ता निगरानी, आपातकालीन प्रक्रियाओं और रोकथाम उपायों के बारे में जानें। ज्ञान जल खतरों के खिलाफ आपकी पहली रक्षा पंक्ति है।",
+    "stats": {
+      "articles": "लेख",
+      "videos": "वीडियो",
+      "guides": "गाइड",
+      "infographics": "इन्फोग्राफिक्स",
+      "totalResources": "कुल संसाधन",
+      "videoTutorials": "वीडियो ट्यूटोरियल",
+      "downloadableGuides": "डाउनलोड करने योग्य गाइड",
+      "categoriesCount": "श्रेणियां"
+    },
+    "categories": {
+      "all": "सभी संसाधन",
+      "waterQuality": "जल गुणवत्ता",
+      "testing": "परीक्षण विधियां",
+      "contamination": "प्रदूषण",
+      "emergency": "आपातकालीन प्रक्रियाएं",
+      "technology": "प्रौद्योगिकी",
+      "safety": "सुरक्षा दिशानिर्देश"
+    },
+    "resourceTypes": {
+      "article": "लेख",
+      "video": "वीडियो",
+      "guide": "गाइड",
+      "infographic": "इन्फोग्राफिक"
+    },
+    "browseByCategory": "श्रेणी अनुसार देखें",
+    "moreTags": "+{{count}} और",
+    "resources": {
+      "waterQualityParams": "जल गुणवत्ता मापदंडों को समझना",
+      "waterQualityParamsDesc": "पीएच, टर्बिडिटी, भंग ऑक्सीजन और जल गुणवत्ता के अन्य मुख्य संकेतकों के बारे में जानें। यह व्यापक गाइड प्रत्येक पैरामीटर का अर्थ और महत्व को कवर करती है।",
+      "testWaterAtHome": "घर पर जल गुणवत्ता का परीक्षण कैसे करें",
+      "testWaterAtHomeDesc": "चरण-दर-चरण वीडियो ट्यूटोरियल जो दिखाता है कि सरल घरेलू परीक्षण किट का उपयोग करके अपनी जल गुणवत्ता का परीक्षण कैसे करें और परिणामों की व्याख्या करें।",
+      "contaminationTypes": "जल संदूषण के प्रकार और स्रोत",
+      "contaminationTypesDesc": "जल संदूषण के विभिन्न प्रकारों, उनके स्रोतों, स्वास्थ्य प्रभावों और रोकथाम विधियों के लिए व्यापक गाइड।",
+      "emergencyProcedures": "आपातकालीन जल सुरक्षा प्रक्रियाएं",
+      "emergencyProceduresDesc": "जल आपातकाल के दौरान क्या करें: बाढ़, प्रदूषण चेतावनी और बुनियादी ढांचे की विफलता। हर सामुदायिक सदस्य के लिए आवश्यक ज्ञान।",
+      "iotSensors": "IoT सेंसर: वे जल गुणवत्ता की निगरानी कैसे करते हैं",
+      "iotSensorsDesc": "जानें कि इंटरनेट ऑफ थिंग्स सेंसर कैसे काम करते हैं और जल गुणवत्ता मापदंडों की निरंतर निगरानी करते हैं और रीयल-टाइम डेटा प्रदान करते हैं।",
+      "safetyInfographic": "जल सुरक्षा इन्फोग्राफिक",
+      "safetyInfographicDesc": "जल सुरक्षा सर्वोत्तम प्रथाओं, चेतावनी संकेतों और आपातकालीन संपर्कों के लिए दृश्य मार्गदर्शक। मुद्रण और साझा करने के लिए बिल्कुल सही।"
+    },
+    "labels": {
+      "author": "लेखक",
+      "published": "प्रकाशित",
+      "duration": "अवधि",
+      "readMore": "और पढ़ें",
+      "watchVideo": "वीडियो देखें",
+      "downloadGuide": "गाइड डाउनलोड करें",
+      "viewInfographic": "इन्फोग्राफिक देखें"
+    },
+    "emergency": {
+      "title": "आपातकालीन प्रतिक्रिया संसाधन",
+      "subtitle": "महत्वपूर्ण जानकारी तक त्वरित पहुंच",
+      "contacts": "आपातकालीन संपर्क",
+      "procedures": "सुरक्षा प्रक्रियाएं",
+      "firstAid": "जल प्रदूषण के लिए प्राथमिक चिकित्सा",
+      "contactsList": {
+        "emergencyServices": "आपातकालीन सेवाएं: 911",
+        "waterAuthority": "जल प्राधिकरण: (555) 123-4567",
+        "poisonControl": "ज़हर नियंत्रण: (800) 222-1222"
+      },
+      "quickActionsTitle": "त्वरित कार्य",
+      "quickActions": {
+        "stopUsing": "दूषित पानी का उपयोग बंद करें",
+        "reportHazards": "खतरों की तुरंत रिपोर्ट करें",
+        "followEvacuation": "निकासी आदेशों का पालन करें"
+      },
+      "kitTitle": "आपातकालीन किट",
+      "kitItems": {
+        "waterPerPerson": "प्रति व्यक्ति/दिन 1 गैलन पानी",
+        "purificationTablets": "पानी शुद्धिकरण टैबलेट",
+        "batteryRadio": "बैटरी चालित रेडियो"
+      }
+    }
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "success": "सफल",
+    "cancel": "रद्द करें",
+    "submit": "जमा करें",
+    "close": "बंद करें"
+  }
+}
