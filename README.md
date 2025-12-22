@@ -180,7 +180,9 @@ If you like this project, give it a ⭐ on GitHub and help spread awareness for 
 
 ## 👩‍💻 Author
 
-Mounika Pothula 📍 CSE Student @ Pragati Engineering College 🎯 Aspiring Data Engineer & AI Enthusiast 🔗 GitHub Profile[https://github.com/mounikapothula1106-creator]
+- Mounika Pothula 📍 CSE Student @ Pragati Engineering College
+- 🎯 Aspiring Data Engineer & AI Enthusiast
+- 🔗 GitHub Profile[https://github.com/mounikapothula1106-creator]
 
 ---
 
