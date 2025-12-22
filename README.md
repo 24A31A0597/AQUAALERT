@@ -87,4 +87,46 @@ src/
  ├── firebase.js
  └── main.tsx
 
----
+🚀 Getting Started
+git clone https://github.com/your-username/aqua-alert.git
+cd aqua-alert
+npm install
+npm run dev
+
+🔐 Environment Setup
+
+Create a Firebase project and add your configuration inside:
+
+src/firebase.js
+
+
+⚠️ Do not expose API keys in public repositories.
+Use environment variables for production deployments.
+
+📈 Future Enhancements
+
+Real IoT sensor integration
+
+AI-based hazard verification
+
+Push notifications for emergencies
+
+Advanced analytics dashboard
+
+Mobile application version
+
+📝 License
+
+This project is open-source and available under the MIT License.
+
+🙌 Acknowledgements
+
+OpenStreetMap contributors
+
+Firebase & Vercel
+
+Community testers and contributors
+
+⭐ Support
+
+If you like this project, give it a ⭐ on GitHub and help spread awareness for safer communities 🌍
