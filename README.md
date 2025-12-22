@@ -126,6 +126,8 @@ aqua-alert/
  ├── tsconfig.json
  └── README.md
 
+```
+
 ---
 
 ## 🚀 Getting Started
