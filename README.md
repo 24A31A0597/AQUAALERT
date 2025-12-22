@@ -88,21 +88,3 @@ src/
  └── main.tsx
 
 ---
-
-## 🚀 Getting Started
-
-```bash
-git clone https://github.com/your-username/aqua-alert.git
-cd aqua-alert
-npm install
-npm run dev
-
----
-
-## 🔐 Environment Setup
-
-Create a Firebase project and add your configuration inside:
-```Js
-src/firebase.js
-⚠️ Do not expose API keys in public repositories.
-Use environment variables for production deployments.
