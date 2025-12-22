@@ -126,3 +126,14 @@ aqua-alert/
  ├── tsconfig.json
  └── README.md
 
+---
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/your-username/aqua-alert.git
+cd aqua-alert
+npm install
+npm run dev
+
+---
