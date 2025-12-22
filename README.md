@@ -78,55 +78,51 @@ The platform combines real-time alerts, crowdsourced hazard reporting, and inter
 ## 📂 Project Structure
 
 ```text
-src/
- ├── components/
- ├── contexts/
- ├── i18n/
- ├── pages/
- ├── routes/
- ├── firebase.js
- └── main.tsx
+aqua-alert/
+ ├── public/
+ │   └── index.html
+ │
+ ├── src/
+ │   ├── components/
+ │   │   ├── Header.tsx
+ │   │   ├── Footer.tsx
+ │   │   ├── LanguageSelector.tsx
+ │   │   ├── VerificationBadge.tsx
+ │   │   └── ...
+ │   │
+ │   ├── contexts/
+ │   │   ├── AuthContext.tsx
+ │   │   └── NotificationContext.tsx
+ │   │
+ │   ├── i18n/
+ │   │   ├── en.json
+ │   │   ├── te.json
+ │   │   └── hi.json
+ │   │
+ │   ├── pages/
+ │   │   ├── Home.tsx
+ │   │   ├── HazardMap.tsx
+ │   │   ├── ReportHazard.tsx
+ │   │   ├── EmergencyAlerts.tsx
+ │   │   ├── Community.tsx
+ │   │   ├── Education.tsx
+ │   │   ├── Profile.tsx
+ │   │   ├── AdminDashboard.tsx
+ │   │   ├── Login.tsx
+ │   │   └── Register.tsx
+ │   │
+ │   ├── routes/
+ │   │   ├── AdminRoute.tsx
+ │   │   └── PrivateRoute.tsx
+ │   │
+ │   ├── firebase.js
+ │   ├── main.tsx
+ │   └── App.tsx
+ │
+ ├── package.json
+ ├── package-lock.json
+ ├── tailwind.config.js
+ ├── vite.config.ts
+ ├── tsconfig.json
+ └── README.md
 
-🚀 Getting Started
-git clone https://github.com/your-username/aqua-alert.git
-cd aqua-alert
-npm install
-npm run dev
-
-🔐 Environment Setup
-
-Create a Firebase project and add your configuration inside:
-
-src/firebase.js
-
-
-⚠️ Do not expose API keys in public repositories.
-Use environment variables for production deployments.
-
-📈 Future Enhancements
-
-Real IoT sensor integration
-
-AI-based hazard verification
-
-Push notifications for emergencies
-
-Advanced analytics dashboard
-
-Mobile application version
-
-📝 License
-
-This project is open-source and available under the MIT License.
-
-🙌 Acknowledgements
-
-OpenStreetMap contributors
-
-Firebase & Vercel
-
-Community testers and contributors
-
-⭐ Support
-
-If you like this project, give it a ⭐ on GitHub and help spread awareness for safer communities 🌍
