@@ -1,97 +1,88 @@
-🌊 Aqua Alert – Water Safety Monitoring Platform
+# 🌊 Aqua Alert – Water Safety Monitoring Platform
 
-Aqua Alert is a community-driven water hazard monitoring and emergency alert platform designed to improve public safety through real-time alerts, interactive hazard mapping, and citizen reporting.
----
-🚀 Key Features
+Aqua Alert is a real-time, community-driven water hazard monitoring platform designed to enhance public safety through official alerts, user-reported hazards, and interactive map visualization.
 
-🏠 Home Dashboard
-Displays official alerts and verified user-reported hazards
-Color-coded alerts:
-🔴 Critical
-🟠 High
-🟡 Medium
-🟢 Low
 ---
-🗺️ Interactive Hazard Map
 
-Live map with all reported hazards
-Severity-based colored markers
-Marker clustering with counts
-Verified / Unverified badges
----
-🚨 Emergency Alerts Dashboard
+## 📌 Overview
 
-Shows official alerts and verified user hazards
-Uses consistent alert card design
-Designed for quick response
----
-🧑‍🤝‍🧑 Community Dashboard
+Aqua Alert enables communities and authorities to collaborate in identifying, reporting, and responding to water-related hazards such as flooding, contamination, and extreme weather events.
 
-Displays community-reported hazards
-Verified & Unverified labels
-Shows uploaded photos and descriptions
----
-📝 Report Hazard
+The platform combines real-time alerts, crowdsourced hazard reporting, and interactive geospatial visualization to create a reliable early-warning and awareness system.
 
-Users & guests can report hazards
-Features:
-Severity selection
-Accurate location capture
-Photo upload
-Voice-to-text description
-Anonymous reporting option
 ---
-🌐 Multi-Language Support
 
-Supports English, Telugu, Hindi, and more
-UI changes dynamically based on language
-Users can type reports in any language
----
-🛠️ Admin Dashboard
+## ✨ Key Features
 
-Create and manage official alerts
-Set severity and locations
-Simplified design (no user panel)
----
-🧠 Verification Logic
+✔ Official emergency alerts released by administrators  
+✔ Community hazard reporting (user & guest supported)  
+✔ Verified and unverified hazard classification  
+✔ Interactive hazard map with clustering and severity-based colors  
+✔ Emergency alerts dashboard for critical situations  
+✔ Community dashboard for public reports and discussions  
+✔ Multi-language support (English, Telugu, Hindi, etc.)  
+✔ Firebase-powered real-time data synchronization  
 
-Official alerts → always verified
-User reports → unverified by default
-Designed for future IoT & AI integration
 ---
-🧰 Tech Stack
 
-React + TypeScript + Vite
-Tailwind CSS
-Leaflet + OpenStreetMap
-Firebase (Auth & Firestore)
-i18n
-Vercel Hosting
----
-🧪 Run Locally
+## 🚨 Hazard Severity Levels
 
-git clone https://github.com/your-username/aqua-alert.git
-cd aqua-alert
-npm install
-npm run dev
----
-🌍 Live Demo
+| Severity | Color | Description |
+|--------|------|-------------|
+| Low | 🟢 Green | Minor concern |
+| Medium | 🟡 Yellow | Moderate risk |
+| High | 🟠 Orange | Significant risk |
+| Critical | 🔴 Red | Immediate danger |
 
-🔗 https://your-vercel-link.vercel.app
 ---
-🔮 Future Enhancements
 
-Real IoT integration
-AI-based hazard verification
-Push notifications
-Heatmaps for risk zones
----
-👩‍💻 Author
+## 🗺️ Interactive Hazard Map
 
-Mounika Pothula 📍 CSE Student @ Pragati Engineering College 🎯 Aspiring Data Engineer & AI Enthusiast 🔗 GitHub Profile[https://github.com/mounikapothula1106-creator]
----
-📝 License
+- Displays official and user-reported hazards
+- Marker clustering for dense regions
+- Color-coded markers based on severity
+- Verified and unverified badges on hazard details
+- Zoom-based cluster expansion for clarity
 
-This project is open-source and available under the MIT License.
 ---
-⭐ If you like this project, don’t forget to star the repo!
+
+## 🧑‍🤝‍🧑 User Roles & Access
+
+### 👤 Guest Users
+- Can report hazards anonymously
+- Limited dashboard access
+
+### 👥 Registered Users
+- Report hazards with identity
+- View hazard map and dashboards
+- Participate in community reporting
+
+### 🛠️ Admin
+- Release official emergency alerts
+- Manage active and resolved alerts
+- Monitor system-wide hazard activity
+
+---
+
+## 🛠️ Technologies Used
+
+- Frontend: React + Vite + TypeScript + Tailwind CSS  
+- Backend: Firebase Realtime Database  
+- Authentication: Firebase Auth  
+- Maps: Leaflet / OpenStreetMap  
+- Internationalization: i18n  
+- Deployment: Vercel  
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+ ├── components/
+ ├── contexts/
+ ├── i18n/
+ ├── pages/
+ ├── routes/
+ ├── firebase.js
+ └── main.tsx
