@@ -165,6 +165,7 @@ Mobile application version
 ---
 
 ## 🙌 Acknowledgements
+
 OpenStreetMap contributors
 Firebase & Vercel
 Community testers and contributors
@@ -172,11 +173,19 @@ Community testers and contributors
 ---
 
 ## ⭐ Support
+
 If you like this project, give it a ⭐ on GitHub and help spread awareness for safer communities 🌍
 
 ---
 
+## 👩‍💻 Author
+
+Mounika Pothula 📍 CSE Student @ Pragati Engineering College 🎯 Aspiring Data Engineer & AI Enthusiast 🔗 GitHub Profile[https://github.com/mounikapothula1106-creator]
+
+---
+
 ## 📝 License
+
 This project is open-source and available under the MIT License.
 
 ---
