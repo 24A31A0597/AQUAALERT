@@ -5,13 +5,13 @@ import { getStorage } from "firebase/storage";
 
 // 🔴 Your Firebase config goes here
 const firebaseConfig = {
-  apiKey: "AIzaSyDWwe7Icd1ztPCE1zfn-zLUuIMjUr770f4",
-  authDomain: "aquaalert-ae2f7.firebaseapp.com",
-  databaseURL: "https://aquaalert-ae2f7-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "aquaalert-ae2f7",
-  storageBucket: "aquaalert-ae2f7.firebasestorage.app",
-  messagingSenderId: "831711052554",
-  appId: "1:831711052554:web:5b6dc605f56ab6c9f1b0f3"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
