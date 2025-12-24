@@ -1,3 +1,7 @@
+console.log(
+  "API KEY CHECK:",
+  import.meta.env.VITE_FIREBASE_API_KEY
+);
 import "./firebase.js";
 import i18n from './i18n/config';
 import { StrictMode } from 'react';
