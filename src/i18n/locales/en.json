@@ -79,7 +79,7 @@
     "title": "Report Water Hazard",
     "subtitle": "Help keep your community safe by reporting water hazards",
     "emergency": "Emergency Situations",
-    "emergencyDesc": "For immediate life-threatening emergencies, call 911 first, then submit this report",
+    "emergencyDesc": "For immediate life-threatening emergencies, call 112 first, then submit this report",
     "hazardType": "What type of hazard are you reporting?",
     "severity": "How severe is this hazard?",
     "title_label": "Brief Title",
