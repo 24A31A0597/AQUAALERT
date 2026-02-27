@@ -104,11 +104,11 @@ float readUltrasonicDistance() {
 // Read turbidity sensor
 int readTurbidity() {
   int sensorValue = analogRead(TURBIDITY_PIN);
-  
-  // Convert analog reading to turbidity value
-  // Adjust this formula based on your sensor's datasheet
-  int turbidity = map(sensorValue, 0, 4095, 0, 1000);
-  
+
+  // Reverse mapping: lower ADC (dirtier) -> higher NTU, higher ADC (cleaner) -> lower NTU
+  int turbidity = map(sensorValue, 0, 4095, 1000, 0);
+  turbidity = constrain(turbidity, 0, 1000);
+
   return turbidity;
 }
 
