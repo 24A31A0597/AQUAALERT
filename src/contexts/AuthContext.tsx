@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { onAuthStateChanged, signOut, createUserWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, get, set } from "firebase/database";
 // @ts-ignore - firebase.js is a JS module
 import { auth, db } from "../firebase";
@@ -60,8 +60,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           } else {
             // ⚠️ Profile missing (common right after registration due to race)
             // Create a minimal default profile, then proceed
+            const defaultName = firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split("@")[0] : "User");
             const defaultProfile = {
-              name: firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split("@")[0] : "User"),
+              name: defaultName,
               email: firebaseUser.email || "",
               role: "user",
             };
@@ -73,7 +74,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             setUser({
               uid: firebaseUser.uid,
               email: firebaseUser.email || "",
-              name: defaultProfile.name,
+              name: defaultName,
               role: defaultProfile.role,
               avatar: undefined,
             });
@@ -110,6 +111,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Create account in Firebase Auth
     const credential = await createUserWithEmailAndPassword(auth, email, password);
     const uid = credential.user.uid;
+
+    // Update Firebase Auth displayName
+    await updateProfile(credential.user, { displayName: name });
 
     // Persist basic profile in Realtime Database
     const userRef = ref(db, `users/${uid}`);
