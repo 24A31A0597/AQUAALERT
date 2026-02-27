@@ -102,6 +102,15 @@ const Login = () => {
           </h2>
         </div>
 
+        <div className="mb-4 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <p className="text-sm text-yellow-800">
+            <strong>Are you an admin?</strong>
+            <Link to="/admin-login" className="ml-2 text-yellow-900 underline hover:text-yellow-950 font-semibold">
+              Go to Admin Login
+            </Link>
+          </p>
+        </div>
+
         <div className="bg-white p-8 rounded-lg shadow">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 

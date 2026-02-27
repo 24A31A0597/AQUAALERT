@@ -136,6 +136,7 @@
       "selectType": "Please select a hazard type",
       "selectSeverity": "Please select a severity level",
       "provideTitle": "Please provide a brief title",
+      "provideDescription": "Please provide a detailed description",
       "provideLocation": "Please provide the location"
     }
   },

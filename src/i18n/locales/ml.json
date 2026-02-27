@@ -122,6 +122,7 @@
       "selectType": "അപകട തരം തിരഞ്ഞെടുക്കുക",
       "selectSeverity": "ഗൗരവതല തിരഞ്ഞെടുക്കുക",
       "provideTitle": "ഒരു ചുരുക്കം ശീർഷകം നൽകുക",
+      "provideDescription": "വിശദമായ വിവരണം നൽകുക",
       "provideLocation": "സ്ഥാനം നൽകുക"
     }
   },

@@ -40,64 +40,77 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
-        try {
-          // 🔹 Fetch user profile from Realtime Database
-          const userRef = ref(db, `users/${firebaseUser.uid}`);
-          const snapshot = await get(userRef);
+    console.log("🔍 AuthProvider: Setting up auth listener");
+    
+    try {
+      const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+        console.log("🔔 onAuthStateChanged fired:", firebaseUser ? `User: ${firebaseUser.email}` : "No user");
+        
+        if (firebaseUser) {
+          try {
+            // 🔹 Fetch user profile from Realtime Database
+            const userRef = ref(db, `users/${firebaseUser.uid}`);
+            const snapshot = await get(userRef);
 
-          if (snapshot.exists()) {
-            const profile = snapshot.val();
+            if (snapshot.exists()) {
+              const profile = snapshot.val();
 
-            setUser({
-              uid: firebaseUser.uid,
-              email: firebaseUser.email || "",
-              name: profile.name || "Admin",
-              role: profile.role || "user",
-              avatar: profile.avatar || undefined,
-            });
-          } else {
-            // ⚠️ Profile missing (common right after registration due to race)
-            // Create a minimal default profile, then proceed
-            const defaultName = firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split("@")[0] : "User");
-            const defaultProfile = {
-              name: defaultName,
-              email: firebaseUser.email || "",
-              role: "user",
-            };
-            try {
-              await set(userRef, defaultProfile);
-            } catch (e) {
-              console.warn("Could not create default profile, proceeding with fallback:", e);
+              setUser({
+                uid: firebaseUser.uid,
+                email: firebaseUser.email || "",
+                name: profile.name || "Admin",
+                role: profile.role || "user",
+                avatar: profile.avatar || undefined,
+              });
+            } else {
+              // ⚠️ Profile missing (common right after registration due to race)
+              // Create a minimal default profile, then proceed
+              const defaultName = firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split("@")[0] : "User");
+              const defaultProfile = {
+                name: defaultName,
+                email: firebaseUser.email || "",
+                role: "user",
+              };
+              try {
+                await set(userRef, defaultProfile);
+              } catch (e) {
+                console.warn("Could not create default profile, proceeding with fallback:", e);
+              }
+              setUser({
+                uid: firebaseUser.uid,
+                email: firebaseUser.email || "",
+                name: defaultName,
+                role: defaultProfile.role,
+                avatar: undefined,
+              });
             }
+          } catch (error) {
+            console.error("❌ Error fetching user profile:", error);
+            // Even if profile fetch fails, keep the session as a basic user
             setUser({
               uid: firebaseUser.uid,
               email: firebaseUser.email || "",
-              name: defaultName,
-              role: defaultProfile.role,
-              avatar: undefined,
+              name: firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split("@")[0] : "User"),
+              role: "user",
             });
           }
-        } catch (error) {
-          console.error("❌ Error fetching user profile:", error);
-          // Even if profile fetch fails, keep the session as a basic user
-          setUser({
-            uid: firebaseUser.uid,
-            email: firebaseUser.email || "",
-            name: firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split("@")[0] : "User"),
-            role: "user",
-          });
+        } else {
+          // 🔹 User logged out
+          setUser(null);
         }
-      } else {
-        // 🔹 User logged out
-        setUser(null);
-      }
 
+        console.log("✅ AuthProvider: Loading complete");
+        setLoading(false);
+      });
+
+      return () => {
+        console.log("🔍 AuthProvider: Cleaning up auth listener");
+        unsubscribe();
+      };
+    } catch (err) {
+      console.error("❌ AuthProvider: Firebase initialization error:", err);
       setLoading(false);
-    });
-
-    return () => unsubscribe();
+    }
   }, []);
 
   /* ================= LOGOUT ================= */

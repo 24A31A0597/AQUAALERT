@@ -139,6 +139,14 @@ const HazardMap: React.FC = () => {
 
             console.log(`  Final location [${id}]:`, location);
 
+            const timestamp = hazard.timestamp;
+            let reportedAtStr = new Date().toISOString();
+            if (typeof timestamp === 'string') {
+              reportedAtStr = timestamp;
+            } else if (typeof timestamp === 'number') {
+              reportedAtStr = new Date(timestamp).toISOString();
+            }
+
             return {
               id: `hazard-${id}`,
               type: hazard.hazardType || 'other',
@@ -147,7 +155,7 @@ const HazardMap: React.FC = () => {
               title: hazard.title || 'Untitled Report',
               description: hazard.description || '',
               reportedBy: hazard.reporterName || hazard.submittedBy || hazard.userName || 'Anonymous',
-              reportedAt: hazard.timestamp || new Date().toISOString(),
+              reportedAt: reportedAtStr,
               status: hazard.status || 'active',
               verified: hazard.verified || false
             } as HazardReport;
@@ -158,7 +166,9 @@ const HazardMap: React.FC = () => {
               hazard.location[0] !== undefined &&
               hazard.location[1] !== undefined &&
               !isNaN(hazard.location[0]) &&
-              !isNaN(hazard.location[1])
+              !isNaN(hazard.location[1]) &&
+              hazard.location[0] !== 0 &&
+              hazard.location[1] !== 0
             );
             if (!isValid) {
               console.log('❌ Filtered out hazard:', hazard.id, hazard.title, 'location:', hazard.location);
@@ -218,6 +228,15 @@ const HazardMap: React.FC = () => {
             const location: [number, number] = (
               lat !== undefined && lng !== undefined ? [lat, lng] : [20.5937, 78.9629]
             );
+            
+            const timestamp = alert.timestamp;
+            let reportedAtStr = new Date().toISOString();
+            if (typeof timestamp === 'string') {
+              reportedAtStr = timestamp;
+            } else if (typeof timestamp === 'number') {
+              reportedAtStr = new Date(timestamp).toISOString();
+            }
+            
             return {
               id: `alert-${id}`,
               type: 'warning',
@@ -226,7 +245,7 @@ const HazardMap: React.FC = () => {
               title: alert.title || 'Official Alert',
               description: alert.message || '',
               reportedBy: 'Admin',
-              reportedAt: alert.timestamp || new Date().toISOString(),
+              reportedAt: reportedAtStr,
               status: alert.status || 'active',
               verified: true
             } as HazardReport;

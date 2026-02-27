@@ -356,62 +356,75 @@ const ReportHazard = () => {
 
   const onSubmit = async (data: HazardForm) => {
     setIsSubmitting(true);
+    console.log('=== FORM SUBMISSION START ===');
+    console.log('Form Data:', JSON.stringify(data, null, 2));
+    
     try {
-      const isAnon = data.anonymous || !user;
-
-      let locationValue: { lat: number; lng: number } | null = null;
+      // Get coordinates (with fallback)
+      let lat = 20.5937, lng = 78.9629; // India center default
+      
       try {
-        locationValue = await getFreshCoordinates();
-        console.log('✅ Fresh geolocation captured:', locationValue);
-      } catch (geoError: any) {
-        console.error('Geolocation error, falling back to manual/default:', geoError);
-        const manual = parseManualLocation(data.location);
-        if (manual) {
-          locationValue = manual;
-          console.log('⚠️ Using manual location fallback:', manual);
-        } else {
-          locationValue = { lat: 20.5937, lng: 78.9629 };
-          console.log('⚠️ Using default location fallback (India center).');
-        }
+        const position = await new Promise<GeolocationCoordinates>((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(
+            (pos) => resolve(pos.coords),
+            reject,
+            { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+          );
+        });
+        lat = position.latitude;
+        lng = position.longitude;
+        console.log('✅ Got location:', { lat, lng });
+      } catch (e) {
+        console.log('⚠️ Using default location');
       }
-
-      // Photos disabled for now - Firebase Storage rules need setup
 
       const payload = {
         hazardType: data.type,
+        title: data.title,
         description: data.description,
         severity: data.severity,
-        title: data.title,
-        location: locationValue,
-        submittedBy: isAnon ? 'anonymous' : (user?.name ?? 'anonymous'),
-        reporterName: isAnon ? 'Anonymous' : (user?.name ?? 'Anonymous'),
+        location: { lat, lng },
+        submittedBy: user?.name || 'anonymous',
+        reporterName: user?.name || 'Anonymous',
         verified: false,
-        timestamp: Date.now(),
+        timestamp: new Date().toISOString(),
         contactInfo: data.contactInfo || null,
-        anonymous: isAnon
+        anonymous: data.anonymous
       };
 
-      console.log('📤 Submitting hazard report:', payload);
+      console.log('📤 Payload to Firebase:', JSON.stringify(payload, null, 2));
 
-      // Save to Firebase (append-only via push)
+      // Submit to Firebase
       const reportsRef = ref(db, 'hazards/reports');
+      console.log('📍 Firebase Path: hazards/reports');
+      
       const newReportRef = await push(reportsRef, payload);
-      console.log('✅ Hazard report saved with ID:', newReportRef.key);
+      console.log('✅ SUCCESS! Report ID:', newReportRef.key);
 
       addNotification({
         type: 'success',
-        title: 'Hazard Report Submitted',
-        message: 'Your report has been submitted successfully. Emergency services have been notified.'
+        title: 'Success! ✅',
+        message: 'Hazard report submitted successfully!'
       });
 
-      // Redirect to home page
-      window.location.href = '/';
-    } catch (error) {
-      console.error('Error submitting report:', error);
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 1500);
+
+    } catch (error: any) {
+      console.error('❌ SUBMISSION ERROR:', error);
+      console.error('Error code:', error.code);
+      console.error('Error message:', error.message);
+      
+      let msg = error.message || 'Unknown error';
+      if (error.code === 'PERMISSION_DENIED') {
+        msg = 'Permission denied - Firebase rules need update. Go to Settings → Firebase Rules.';
+      }
+      
       addNotification({
         type: 'error',
-        title: 'Submission Failed',
-        message: 'There was an error submitting your report. Please try again.'
+        title: 'Failed ❌',
+        message: msg
       });
     } finally {
       setIsSubmitting(false);
@@ -486,7 +499,11 @@ const ReportHazard = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="bg-white rounded-lg shadow-lg p-8"
         >
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            console.log('📝 Form submitted, validating...');
+            handleSubmit(onSubmit)();
+          }} className="space-y-8">
             {/* Hazard Type */}
             <div>
               <label className="block text-lg font-semibold text-gray-900 mb-4">
@@ -568,10 +585,11 @@ const ReportHazard = () => {
             {/* Description with Voice Recording */}
             <div>
               <label className="block text-lg font-semibold text-gray-900 mb-2">
-                {t('reportHazard.description')} <span className="text-gray-500 font-normal">{t('reportHazard.descriptionHelper')}</span>
+                {t('reportHazard.description')} <span className="text-red-600">*</span>
               </label>
               <div className="relative">
                 <textarea
+                  {...register('description', { required: t('reportHazard.validation.provideDescription') })}
                   value={description}
                   onChange={(e) => {
                     const newValue = e.target.value;
@@ -598,6 +616,9 @@ const ReportHazard = () => {
                   {isRecording ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
                 </button>
               </div>
+              {errors.description && (
+                <p className="mt-2 text-sm text-red-600">{errors.description.message}</p>
+              )}
               {isRecording && (
                 <p className="mt-2 text-sm text-red-600 animate-pulse">
                   🔴 {t('reportHazard.voice.recordingHint')}
@@ -657,11 +678,23 @@ const ReportHazard = () => {
               </div>
             </div>
 
+            {/* Error Summary */}
+            {Object.keys(errors).length > 0 && (
+              <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
+                <p className="text-red-800 font-semibold mb-2">⚠️ Please fix these errors:</p>
+                <ul className="text-sm text-red-700 space-y-1">
+                  {Object.entries(errors).map(([field, error]: any) => (
+                    <li key={field}>• {field}: {error.message}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* Submit Button */}
             <div className="flex justify-end space-x-4">
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || Object.keys(errors).length > 0}
                 className="flex items-center space-x-2 px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isSubmitting ? (

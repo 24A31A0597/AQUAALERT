@@ -118,7 +118,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © 2024 Aqua Alert. All rights reserved. Built for community water safety.
+            © 2026 Aqua Alert. All rights reserved. Built for community water safety.
           </p>
         </div>
       </div>

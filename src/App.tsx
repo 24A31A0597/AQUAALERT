@@ -8,17 +8,22 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import HazardMap from "./pages/HazardMap";
 import ReportHazard from "./pages/ReportHazard";
+import SimpleTest from "./pages/SimpleTest";
 import IoTDashboard from "./pages/IoTDashboard";
 import EmergencyAlerts from "./pages/EmergencyAlerts";
 import Community from "./pages/Community";
 import Education from "./pages/Education";
 import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminLogin from "./pages/AdminLogin";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Diagnostic from "./pages/Diagnostic";
 
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { NotificationProvider } from "./contexts/NotificationContext";
+
+console.log("✅ App.tsx module loaded");
 
 /* ================= PRIVATE ROUTE ================= */
 
@@ -49,8 +54,20 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 const HomeRedirect = () => {
   const { loading } = useAuth();
 
-  if (loading) return null;
+  console.log("🏠 HomeRedirect: loading =", loading);
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600 mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  console.log("🏠 HomeRedirect: Rendering Home page");
   // Allow all users (including admins) to view Home page
   return <Home />;
 };
@@ -71,6 +88,10 @@ function App() {
 
                 {/* AUTO REDIRECT ROOT */}
                 <Route path="/" element={<HomeRedirect />} />
+                
+                {/* DIAGNOSTIC & TEST */}
+                <Route path="/diagnostic" element={<Diagnostic />} />
+                <Route path="/test" element={<SimpleTest />} />
 
                 {/* PUBLIC */}
                 <Route
@@ -93,6 +114,7 @@ function App() {
                 />
                 <Route path="/education" element={<Education />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/admin-login" element={<AdminLogin />} />
                 <Route path="/register" element={<Register />} />
 
                 {/* USER */}
