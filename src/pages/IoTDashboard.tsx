@@ -47,8 +47,8 @@ const IoTDashboard = () => {
 
   // 💧 Turbidity Logic (Real NTU standards)
   const getTurbidityStatus = (value: number) => {
-    if (value > 2500) return { text: 'Highly Polluted', color: 'text-red-600 bg-red-100' };
-    if (value > 1500) return { text: 'Cloudy - Unsafe', color: 'text-orange-600 bg-orange-100' };
+    if (value < 1200) return { text: 'Highly Polluted', color: 'text-red-600 bg-red-100' };
+    if (value < 1600) return { text: 'Cloudy - Unsafe', color: 'text-orange-600 bg-orange-100' };
     return { text: 'Safe & Clear', color: 'text-green-600 bg-green-100' };
   };
 
